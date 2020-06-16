@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Meteora Project was done for educational purposes at Hetic - Team 2 H2 P2023
 
 ## Available Scripts
 
