@@ -1,0 +1,21 @@
+.home-container{
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -25%);
+}
+
+.home-container .home-display-flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-container .home-display-flex .meteora-logo-intro{
+    width: 490px;
+}
+
+.home-container .home-display-flex .home-catchphrase{
+    margin-top: 110px;
+    color: #F3F3F3;
+}
