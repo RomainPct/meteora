@@ -15,10 +15,11 @@ body,
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 body {
-    background-color: #2D2D2D;
     font-family: 'Quicksand', sans-serif;
     font-size: 24px;
     font-weight: 500;
+    color: #F3F3F3;
+    background-color: #2D2D2D;
 }
 
 main {
