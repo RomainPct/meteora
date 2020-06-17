@@ -1,0 +1,4 @@
+.graphContainer {
+    padding-top: 112px;
+    height: calc(100vh - 2 * 112px);
+}

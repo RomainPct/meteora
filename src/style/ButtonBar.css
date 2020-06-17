@@ -1,10 +1,10 @@
 .buttonBarContainer{
     display: flex;
     justify-content: center;
-    padding: 5px;
+    padding: 4px;
     background-color: #47799C;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 32px auto;
 }
 
 .button{
@@ -14,15 +14,13 @@
     color: #f3f3f3;
     background-color: #47799C;
     width: 100%;
-    padding: 5%;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding: 8px;
     text-align: center;
     white-space: nowrap;
+    cursor: pointer;
 }
 .button.selected {
     background: #243859;
     font-weight: 600;
     transition: background 0.3s;
-    width: 100%;
 }

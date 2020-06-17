@@ -4,6 +4,7 @@ header{
 }
 
 .meteora-logo{
-    width: 170px;
-    margin: 42px 0px 0px 41px;
+    height: 32px;
+    margin: 24px;
+    padding: 16px;
 }
