@@ -10,7 +10,7 @@ export const Home = () => {
     const ctx = useContext(GlobalContext)
 
     return (
-        <main className="home-container">
+        <main>
             <h1>This is home</h1>
             {ctx.introductionIsDone ?
                 null :
