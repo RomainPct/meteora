@@ -9,28 +9,26 @@ import {
     BrowserRouter as Router,
     Switch,
     Route
-  } from "react-router-dom";
+  } from 'react-router-dom'
 
 function App() {
     return ( 
-        <div className="App">
+        <Router>
             <Header/>
             <Scene3D/>
-            <Router>
-                <Switch>
-                    <Route path="/detailedMeteor/:id">
-                        <DetailedMeteor/>
-                    </Route>
-                    <Route path="/detailedYear/:year">
-                        <DetailedYear/>
-                    </Route>
-                    <Route path="/">
-                        <Home/>
-                    </Route>
-                </Switch>
-            </Router>
-        </div>
-        )
-    }
+            <Switch>
+                <Route path="/detailedMeteor/:id">
+                    <DetailedMeteor/>
+                </Route>
+                <Route path="/detailedYear/:year">
+                    <DetailedYear/>
+                </Route>
+                <Route path="/">
+                    <Home/>
+                </Route>
+            </Switch>
+        </Router>
+    )
+}
     
-    export default App
+export default App
