@@ -45,8 +45,6 @@ export function Sphere(props) {
 }
 
 export function Scene3D() {
-    const mesh = useRef()
-    const [active, setActive] = useState(false)
     return (
         <Canvas id="main3DScene" style={{height:'100vh',width:'100vw'}}>
             <ambientLight/>

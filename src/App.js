@@ -18,10 +18,10 @@ function App() {
             <Scene3D/>
             <Router>
                 <Switch>
-                    <Route path="/detailedMeteor">
+                    <Route path="/detailedMeteor/:id">
                         <DetailedMeteor/>
                     </Route>
-                    <Route path="/detailedYear">
+                    <Route path="/detailedYear/:year">
                         <DetailedYear/>
                     </Route>
                     <Route path="/">
