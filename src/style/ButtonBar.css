@@ -1,13 +1,10 @@
 .buttonBarContainer{
     display: flex;
     justify-content: center;
-}
-
-.buttonBarComponent{
-    display: flex;
-    justify-content: space-arround;
-    background-color: #47799C;
     padding: 5px;
+    background-color: #47799C;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .button{

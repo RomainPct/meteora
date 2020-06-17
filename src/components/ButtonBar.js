@@ -16,11 +16,9 @@ export const ButtonBar = (props) => {
 
     return (
         <div className="buttonBarContainer">
-            <div className="buttonBarComponent">
-                <Buttontype action={() => { select(0) }} isSelected={selectedButton === 0} name="Mass distribution"/>
-                <Buttontype action={() => { select(1) }} isSelected={selectedButton === 1} name="Mass comparison" />
-                <Buttontype action={() => { select(2) }} isSelected={selectedButton === 2} name="Danger level" />
-            </div>
+            <Buttontype action={() => { select(0) }} isSelected={selectedButton === 0} name="Mass distribution"/>
+            <Buttontype action={() => { select(1) }} isSelected={selectedButton === 1} name="Mass comparison" />
+            <Buttontype action={() => { select(2) }} isSelected={selectedButton === 2} name="Danger level" />
         </div>
     )
 }
