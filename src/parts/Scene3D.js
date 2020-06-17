@@ -1,6 +1,6 @@
-import ReactDOM from 'react-dom'
 import React, { useRef, useState } from 'react'
 import { Canvas, useFrame } from 'react-three-fiber'
+import '../style/scene3D.css'
 
 export function Box(props) {
   // This reference will give us direct access to the mesh
@@ -29,10 +29,14 @@ export function Box(props) {
 
 export function Sphere(props) {
     const mesh = useRef()
-    useFrame(() => (mesh.current.position.x += 0.01))
+
+    const [rotation, setRotation] = useState(0)
+
+    useFrame(() => (setRotation(rotation + 0.01)))
     return (
         <mesh
             ref={mesh}
+            rotation={[rotation,rotation,rotation]}
             >
             <sphereBufferGeometry attach="geometry" />
             <meshStandardMaterial attach="material" color={'brown'} />
@@ -44,10 +48,10 @@ export function Scene3D() {
     const mesh = useRef()
     const [active, setActive] = useState(false)
     return (
-        <Canvas style={{height:'100vh',width:'100vw'}}>
+        <Canvas id="main3DScene" style={{height:'100vh',width:'100vw'}}>
             <ambientLight/>
             <Sphere/>
-            <Box/>
+            <Box position={[3, 0, 0]}/>
         </Canvas>
     )
 }
