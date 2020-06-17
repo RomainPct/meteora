@@ -10,10 +10,7 @@ export const Header = () => {
     return (
         <header>
             {ctx.introductionIsDone ?
-                <a href="/">
-                    <img className="meteora-logo" src={meteoraLogo} alt="Meteora logo"/>
-                </a>
-                : null
+                <a href="/"><img className="meteora-logo" src={meteoraLogo} alt="Meteora logo"/></a> : null
             }
         </header>
     )
