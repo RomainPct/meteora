@@ -1,20 +1,16 @@
-.home-container{
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%, -25%);
-}
-
-.home-container .home-display-flex{
+.home-display-flex{
+    margin-top: 230px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100vw;
 }
 
-.home-container .home-display-flex .meteora-logo-intro{
+.home-display-flex .meteora-logo-intro{
     width: 490px;
 }
 
-.home-container .home-display-flex .home-catchphrase{
+.home-display-flex .home-catchphrase{
     margin-top: 110px;
+    text-align: center;
 }
