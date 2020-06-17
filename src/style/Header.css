@@ -1,0 +1,9 @@
+header{
+    position: fixed;
+    z-index: 200;
+}
+
+.meteora-logo{
+    width: 170px;
+    margin: 42px 0px 0px 41px;
+}
