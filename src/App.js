@@ -23,7 +23,7 @@ function App() {
                 <Route path="/detailedYear/:year">
                     <DetailedYear/>
                 </Route>
-                <Route path="/">
+                <Route exact path="/">
                     <Home/>
                 </Route>
             </Switch>
