@@ -6,7 +6,7 @@ import { Meteor } from './ThreeObjects/Meteor'
 import { useLocation, useHistory } from 'react-router-dom'
 import { GlobalContext } from '../contexts/GlobalContext'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { DirectionalLight, DirectionalLightHelper } from 'three'
+import { DirectionalLight } from 'three'
 
 const CameraController = () => {
     const { camera, gl, scene } = useThree()
