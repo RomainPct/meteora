@@ -19,7 +19,7 @@ function App() {
     useEffect(() => {
         setTimeout(() => {
             setCtx({introductionIsDone: true})
-        }, 10000)
+        }, 3000)
     }, [])
 
     return ( 

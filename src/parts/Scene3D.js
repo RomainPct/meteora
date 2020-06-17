@@ -4,7 +4,7 @@ import { Canvas } from 'react-three-fiber'
 import { Earth } from './ThreeObjects/Earth'
 import { Meteor } from './ThreeObjects/Meteor'
 import { useLocation, useHistory } from 'react-router-dom'
-import { GlobalContext } from '../contexts/GlobalContext';
+import { GlobalContext } from '../contexts/GlobalContext'
 
 export function Scene3D() {
 
@@ -14,13 +14,13 @@ export function Scene3D() {
     const ctx = useContext(GlobalContext)
 
     return (
-        <div>
-            <h1>{ctx.introductionIsDone ? "Introduction done" : "Introduction not finished"}</h1>
-            <Canvas id="main3DScene" style={{height:'100vh',width:'100vw'}}>
-                <ambientLight/>
-                <Earth scale={pathname === '/' ? [1, 1, 1] : [2, 2, 2]} />
+        <Canvas id="main3DScene" style={{height:'100vh',width:'100vw'}}>
+            <GlobalContext.Provider value={ctx}>
+                <ambientLight args={[0x404040]}/>
+                <directionalLight args={[0xffffff, 1]} position={[-5, 0, 0]} />
+                <Earth/>
                 <Meteor history={history} position={[3, 0, 0]}/>
-            </Canvas>
-        </div>
+            </GlobalContext.Provider>
+        </Canvas>
         )
 }
