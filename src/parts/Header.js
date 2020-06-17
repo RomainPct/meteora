@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import '../style/Header.css'
 import meteoraLogo from '../assets/images/logo.svg'
 import { GlobalContext } from '../contexts/GlobalContext'
+import { Link } from 'react-router-dom'
 
 export const Header = () => {
 
@@ -10,7 +11,10 @@ export const Header = () => {
     return (
         <header>
             {ctx.introductionIsDone ?
-                <a href="/"><img className="meteora-logo" src={meteoraLogo} alt="Meteora logo"/></a> : null
+                <Link to="/">
+                    <img className="meteora-logo" src={meteoraLogo} alt="Meteora logo"/>
+                </Link>
+                : null
             }
         </header>
     )

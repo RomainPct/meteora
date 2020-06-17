@@ -1,4 +1,4 @@
-import '../style/scene3D.css'
+import '../style/Scene3D.css'
 import React, { useContext, useEffect } from 'react'
 import { Canvas, useThree } from 'react-three-fiber'
 import { Earth } from './ThreeObjects/Earth'
