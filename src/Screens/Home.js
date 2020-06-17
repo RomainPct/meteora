@@ -14,8 +14,7 @@ export const Home = () => {
             <h1>This is home</h1>
             {ctx.introductionIsDone ?
                 null
-                :
-                <div className="home-display-flex">
+                : <div className="home-display-flex">
                     <img className="meteora-logo-intro" src={meteoraLogo} alt="Meteora logo"/>
                     <h3 className="home-catchphrase">All known meteors since the IXth century</h3>
                 </div>
