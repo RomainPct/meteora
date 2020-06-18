@@ -1,31 +1,33 @@
-h2{
-    font-weight: lighter;
-}
+
 
 .detailedMeteorContainer{
     width: 100%;
     display: flex;
     justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+    padding: 0 160px 100px 160px;
+    box-sizing: border-box;
+
 }
 .detailedMeteorText{
     text-align: center;
-    width: 80%;
+
 }
 .detailedMeteorUpperInfo{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    margin-top: 10vh;
+    margin-top: 240px;
+    margin-bottom: 180px;
 }
 .detailedMeteorLowerInfo{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     width: 100%;
-    margin-top: 32vh;
-    
 }
-.infoDesc{
-    font-weight: lighter;
+.meteorInfoCard{
+    text-align: center;
 }
