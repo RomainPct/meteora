@@ -1,16 +1,7 @@
-.home-display-flex{
-    margin-top: 230px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.homeWelcomeView {
+    height: 100vh;
     width: 100vw;
-}
-
-.home-display-flex .meteora-logo-intro{
-    width: 490px;
-}
-
-.home-display-flex .home-catchphrase{
-    margin-top: 110px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

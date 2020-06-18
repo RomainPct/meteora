@@ -1,12 +1,22 @@
-import React, { useContext, useEffect } from 'react'
 import '../style/Home.css'
-import meteoraLogo from '../assets/images/logo.svg'
+import React, { useContext, useEffect } from 'react'
+import {useTransition, animated} from 'react-spring'
 import { GlobalContext } from '../contexts/GlobalContext'
 import API from '../managers/API'
 
 export const Home = () => {
 
     const ctx = useContext(GlobalContext)
+
+    const descriptionTransition = useTransition(
+        ctx.introductionIsDone,
+        null,
+        {
+            from: { opacity: 1, transform: 'scale(1)' },
+            leave: { opacity: 0, transform: 'scale(0.8)' },
+            config: { duration: 300 }
+        }
+    )
 
     useEffect(() => {
         loadYear()
@@ -28,15 +38,17 @@ export const Home = () => {
     return (
         <main>
             <h1>This is home</h1>
+            {descriptionTransition.map(({item, key, props}) => {
+                return item ? null :
+                    <animated.div key={key} className="homeWelcomeView" style={props}>
+                        <h3 className="homeCatchphrase">All known meteors since the IXth century</h3>
+                    </animated.div>
+            })}
             {ctx.introductionIsDone ?
                 <div className="home-main-view">
                     <h2>{ctx.currentYear}</h2>
                 </div>
-                :
-                <div className="home-display-flex">
-                    <img className="meteora-logo-intro" src={meteoraLogo} alt="Meteora logo"/>
-                    <h3 className="home-catchphrase">All known meteors since the IXth century</h3>
-                </div>
+                :null
             }
         </main>
     )
