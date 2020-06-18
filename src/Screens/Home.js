@@ -1,5 +1,4 @@
 import React, { useContext, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import '../style/Home.css'
 import meteoraLogo from '../assets/images/logo.svg'
 import { GlobalContext } from '../contexts/GlobalContext'
@@ -15,11 +14,16 @@ export const Home = () => {
 
     const loadYear = (_year = ctx.currentYear) => {
         API.fetchYear(_year, (json) => {
-            console.log(json)
+            const newYear = {}
+            newYear[_year] = json
+            ctx.update({
+                years: {
+                    ...ctx.years,
+                    ...newYear
+                }
+            })
         })
     }
-
-    console.log(ctx)
 
     return (
         <main>

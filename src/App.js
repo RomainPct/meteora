@@ -15,16 +15,26 @@ import API from './managers/API'
 
 function App() {
 
-    const [ctx, setCtx] = useState(defaultGlobalContext)
+    const updateContext = (newCtx) => {
+        setCtx( currentCtx => ({
+            ...currentCtx,
+            ...newCtx
+        }))
+    }
+
+    const [ctx, setCtx] = useState({
+        ...defaultGlobalContext,
+        update: updateContext
+    })
 
     useEffect(() => {
         API.fetchAvailableYears((availableYears) => {
             setTimeout(() => {
-                setCtx({
-                    ...ctx,
+                setCtx(currentCtx => ({
+                    ...currentCtx,
                     introductionIsDone: true,
                     availableYears: availableYears
-                })
+                }))
             }, 3000)
         })
     }, [])

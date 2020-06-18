@@ -4,7 +4,8 @@ export const defaultGlobalContext = {
     introductionIsDone: false,
     currentYear: 2000,
     years: {},
-    availableYears: []
+    availableYears: [],
+    update: (newContext) => {}
 }
 
 export const GlobalContext = React.createContext(defaultGlobalContext)
