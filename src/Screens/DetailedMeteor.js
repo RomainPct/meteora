@@ -21,7 +21,7 @@ export const DetailedMeteor = () => {
             <div className="detailedMeteorContainer">
                 <div className="detailedMeteorText">
                     <h3> {detailedMeteor.name} </h3>
-                    <h3>1987</h3>
+                    <h3>{detailedMeteor.year}</h3>
                     <h3>You might have seen it burn !</h3>
                 </div>
                     <div className="detailedMeteorUpperInfo">
