@@ -24,10 +24,14 @@ export const DetailedYear = () => {
     return (
         <main>
             <h1>This is DetailedYear {year}</h1>
-            <div className="graphContainer">
-                {switchMainContent()}
+            <div className="detailedYearContainer">
+                <div className="yearInfoContainer">
+                    <YearBarInfo className="test" year={2000} meteorsCount={10} />
+                </div>
+                <div className="graphContainer">
+                    {switchMainContent()}
+                </div>
             </div>
-            <YearBarInfo year={2000} meteorsCount={10} />
             <ButtonBar onSelect={(id) => { setSelectedIndex(id) }} defaultId={selectedIndex} />
         </main>
     )

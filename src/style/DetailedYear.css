@@ -2,3 +2,15 @@
     padding-top: 112px;
     height: calc(100vh - 2 * 112px);
 }
+
+.detailedYearContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.yearInfoContainer{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
