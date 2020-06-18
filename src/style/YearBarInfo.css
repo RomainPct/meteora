@@ -1,0 +1,51 @@
+.yearBarInfoContainer{
+    display: flex;
+    padding: 5px;
+}
+
+.Line{
+    width: 1px;
+    height: 250px;
+    background-color: #f3f3f3;
+}
+
+.yearBarInfoItems{
+    display: flex;
+    flex-direction: column;
+}
+
+.yearNameMenu{
+    padding-bottom: 15px;
+    padding-left: 8px;
+}
+
+.yearBarMeteors{
+    background-color: #243859;
+    font-size: 18px;
+    font-weight: 300;
+    padding: 8px;
+}
+
+.yearBarAvMass{
+    margin-top: 5px;
+    padding: 8px;
+    background-color: #47799C;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.yearBarMassMin{
+    margin-top: 5px;
+    padding: 8px;
+    background-color: #243859;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.yearBarMassMax{
+    margin-top: 5px;
+    padding: 8px;
+    background-color: #47799C;
+    font-size: 18px;
+    font-weight: 300;
+}

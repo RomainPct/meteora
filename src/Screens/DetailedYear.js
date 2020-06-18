@@ -2,6 +2,7 @@ import '../style/DetailedYear.css'
 import React, { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ButtonBar } from '../components/ButtonBar'
+import { YearBarInfo } from '../components/YearBarInfo'
 import { MassDistributionGraph } from '../parts/detailedYear/MassDistributionGraph'
 import { MassComparisonGraph } from '../parts/detailedYear/MassComparisonGraph'
 import { DangerLevelGraph } from '../parts/detailedYear/DangerLevelGraph'
@@ -26,6 +27,7 @@ export const DetailedYear = () => {
             <div className="graphContainer">
                 {switchMainContent()}
             </div>
+            <YearBarInfo/>
             <ButtonBar onSelect={(id) => { setSelectedIndex(id) }} defaultId={selectedIndex} />
         </main>
     )
