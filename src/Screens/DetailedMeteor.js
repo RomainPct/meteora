@@ -11,14 +11,14 @@ export const DetailedMeteor = () => {
     const [detailedMeteor, setDetailedMeteor] = useState({})
     useEffect(() => {
         API.fetchMeteor(id, (result) => {
-            setDetailedMeteor(result)
-            getMeteorDesc()
+            setDetailedMeteor({
+                ...result,
+                description: getMeteorDescription(result.mass)
+            })
         })
     }, [])
 
-    function getMeteorDesc (){
-        let meteorDesc = "default desc"
-
+    function getMeteorDescription(mass) {
         const bigMeteorDesc = [
             "You might have seen it burn !",
             "It was massive enough to be seen !",
@@ -30,16 +30,7 @@ export const DetailedMeteor = () => {
              "This one was too small to be seen",
              "There is no way you saw this one burning",
          ]
-         if (detailedMeteor.mass > 100 ) {
-              meteorDesc = bigMeteorDesc[Math.random()*bigMeteorDesc.length]
-         } 
-         else{
-            meteorDesc = smallMeteorDesc[Math.random()*smallMeteorDesc.length]
-         }
-         setDetailedMeteor({
-            ...detailedMeteor,
-            meteorDesc: meteorDesc
-        })
+         return (mass > 100) ? bigMeteorDesc[Math.floor(Math.random()*bigMeteorDesc.length)] : smallMeteorDesc[Math.floor(Math.random()*smallMeteorDesc.length)]
     }
 
     return (
@@ -49,7 +40,7 @@ export const DetailedMeteor = () => {
                 <div className="detailedMeteorText">
                     <h3>{detailedMeteor.name}</h3>
                     <h3>{detailedMeteor.year}</h3>
-                    <h3>{detailedMeteor.meteorDesc}</h3>
+                    <h3>{detailedMeteor.description}</h3>
                 </div>
                     <div className="detailedMeteorUpperInfo">
                         <div className="meteorInfoCard">
