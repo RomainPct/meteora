@@ -1,18 +1,29 @@
-import React, { useContext, useEffect } from 'react'
 import '../style/Home.css'
-import meteoraLogo from '../assets/images/logo.svg'
+import React, { useContext, useEffect } from 'react'
+import {useTransition, animated} from 'react-spring'
 import { GlobalContext } from '../contexts/GlobalContext'
 import API from '../managers/API'
+import { YearBarInfo } from '../components/YearBarInfo'
 
 export const Home = () => {
 
     const ctx = useContext(GlobalContext)
 
+    const descriptionTransition = useTransition(
+        ctx.introductionIsDone,
+        null,
+        {
+            from: { opacity: 1, transform: 'scale(1)' },
+            leave: { opacity: 0, transform: 'scale(0.8)' },
+            config: { duration: 300 }
+        }
+    )
+
     useEffect(() => {
         loadYear()
     }, [])
 
-    const loadYear = (_year = ctx.currentYear) => {
+    const loadYear = (_year = ctx.currentYear.year) => {
         API.fetchYear(_year, (json) => {
             const newYear = {}
             newYear[_year] = json
@@ -28,15 +39,25 @@ export const Home = () => {
     return (
         <main>
             <h1>This is home</h1>
+            {descriptionTransition.map(({item, key, props}) => {
+                return item ? null :
+                    <animated.div key={key} className="homeWelcomeView" style={props}>
+                        <h3 className="homeCatchphrase">All known meteors since the IXth century</h3>
+                    </animated.div>
+            })}
             {ctx.introductionIsDone ?
-                <div className="home-main-view">
-                    <h2>{ctx.currentYear}</h2>
+                <div className="homeMainInformations">
+                    <YearBarInfo year={ctx.currentYear.year} meteorsCount={ctx.currentYear.meteorsCount} withLink={true} />
                 </div>
-                :
-                <div className="home-display-flex">
-                    <img className="meteora-logo-intro" src={meteoraLogo} alt="Meteora logo"/>
-                    <h3 className="home-catchphrase">All known meteors since the IXth century</h3>
+                :null
+            }
+            {ctx.introductionIsDone ?
+                <div className="homeMainNavigation">
+                    <h3>{ctx.currentYear.year}</h3>
+                    <div className="timeline"></div>
+                    <div className="playPauseButton"></div>
                 </div>
+                :null
             }
         </main>
     )

@@ -61,6 +61,15 @@ class API {
         this.fetchOurAPI(`countFallenMeteors.php?year=${encodeURIComponent(year)}`, handler)
     }
 
+    /**
+     * 
+     * @param {Number} year 
+     * @param {(response) => {}} handler Callback function called when response is returned
+     */
+    fetchSmallestMeteor(year, handler = (result) => {}) {
+        this.fetchOurAPI(`getSmallestMeteor.php?year=${encodeURIComponent(year)}`, handler)
+    }
+
 }
 
 export default new API()

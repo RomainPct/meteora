@@ -2,7 +2,7 @@ import React from 'react'
 
 export const defaultGlobalContext = {
     introductionIsDone: false,
-    currentYear: 2000,
+    currentYear: { year: 2000, meteorsCount: 0 },
     years: {},
     availableYears: [],
     update: (newContext) => {}

@@ -21,7 +21,7 @@ export function Scene3D() {
                 <CameraControls />
                 <ambientLight args={[0x404040]}/>
                 <FixedLight />
-                <Earth isRotating={pathname == '/'} />
+                <Earth isRotating={pathname === '/'} />
                 <Meteor history={history} position={[3, 0, 0]}/>
             </GlobalContext.Provider>
         </Canvas>

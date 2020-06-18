@@ -29,14 +29,16 @@ function App() {
 
     useEffect(() => {
         API.fetchAvailableYears((availableYears) => {
-            setTimeout(() => {
-                setCtx(currentCtx => ({
-                    ...currentCtx,
-                    introductionIsDone: true,
-                    availableYears: availableYears
-                }))
-            }, 3000)
+            updateContext({
+                availableYears: availableYears,
+                currentYear: availableYears[250]
+            })
         })
+        setTimeout(() => {
+            updateContext({
+                introductionIsDone: true
+            })
+        }, 3000)
     }, [])
 
     return ( 

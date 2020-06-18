@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react'
 import '../style/DetailedMeteor.css'
-import { Link, useParams } from 'react-router-dom'
+import React, {useEffect, useState} from 'react'
+import { useParams } from 'react-router-dom'
 import API from '../managers/API'
 
 
@@ -33,19 +33,19 @@ export const DetailedMeteor = () => {
                         <div className="meteorInfoCard">
                             <p>MASS</p>
                             <h3>{detailedMeteor.mass}g</h3>
-                            <p className="infoDesc">As heavy as a smartphone ! 📱</p>
+                            <p className="infoDesc">As heavy as a smartphone ! <span role="img" aria-label="smartphone">📱</span></p>
                         </div>
                     </div>
                     <div className="detailedMeteorLowerInfo">
                         <div className="meteorInfoCard">
                             <p>FALL LOCATION</p>
-                            <h3>Mexico 🇲🇽</h3>
+                            <h3>Mexico <span role="img" aria-label="mexico">🇲🇽</span></h3>
                             <p className="infoDesc">near Mexico city</p>
                         </div>
                         <div className="meteorInfoCard">
                             <p>DESTRUCTIVE POWER</p>
                             <h3>80k Newtons</h3>
-                            <p className="infoDesc">The power of Niagara Falls 🌊</p>
+                            <p className="infoDesc">The power of Niagara Falls <span role="img" aria-label="power">🌊</span></p>
                         </div>
                     </div>
             </div>

@@ -1,6 +1,6 @@
 import '../style/DetailedYear.css'
 import React, { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { ButtonBar } from '../components/ButtonBar'
 import { YearBarInfo } from '../components/YearBarInfo'
 import { MassDistributionGraph } from '../parts/detailedYear/MassDistributionGraph'

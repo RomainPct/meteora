@@ -21,7 +21,7 @@ export function Earth(props) {
     const { earthPos, earthScale } = useSpring({
         earthPos: ctx.introductionIsDone ? [0, 0, 0] : [0, -4, 0],
         earthScale: ctx.introductionIsDone ? [0.5, 0.5, 0.5] : [1, 1, 1],
-        config: { mass: 3, tension: 100, friction: 200 }
+        config: { mass: 2, tension: 100, friction: 200 }
     })
 
     useFrame(() => {
