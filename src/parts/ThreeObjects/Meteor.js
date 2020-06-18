@@ -26,7 +26,7 @@ export function Meteor(props) {
         onClick={handleClick}
         onPointerOver={e => setHover(true)}
         onPointerOut={e => setHover(false)}>
-        <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
+        <boxBufferGeometry attach="geometry" args={[0.2, 0.2, 0.2]} />
         <meshStandardMaterial attach="material" color={hovered ? 'hotpink' : 'orange'} />
         </mesh>
         )

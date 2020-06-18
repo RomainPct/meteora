@@ -1,11 +1,22 @@
-header{
+.header {
     position: fixed;
-    z-index: 200;
     top: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
 }
 
-.meteora-logo{
+.header .meteora-logo {
     height: 32px;
     margin: 24px;
     padding: 16px;
+}
+
+.header .backButton {
+    position: absolute;
+    height: 44px;
+    width: 44px;
+    left: 40px;
+    background: green;
+    margin-right: 16px;
 }

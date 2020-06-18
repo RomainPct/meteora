@@ -12,10 +12,11 @@ export const CameraControls = () => {
                 ref={controls}
                 args={[camera, domElement]}
                 enableDamping={true}
-                enableZoom={true}
-                enablePan={false}
-                minDistance={5}
-                maxDistance={6}
                 rotateSpeed={0.4}
+                enableZoom={true}
+                zoomSpeed={0.2}
+                minDistance={3}
+                maxDistance={6}
+                enablePan={false}
                 />
 }
