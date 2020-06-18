@@ -12,8 +12,35 @@ export const DetailedMeteor = () => {
     useEffect(() => {
         API.fetchMeteor(id, (result) => {
             setDetailedMeteor(result)
+            getMeteorDesc()
         })
     }, [])
+
+    function getMeteorDesc (){
+        let meteorDesc = "default desc"
+
+        const bigMeteorDesc = [
+            "You might have seen it burn !",
+            "It was massive enough to be seen !",
+            "Where you around when it was burning ?",
+            "There is a chance you have seen it burning !",
+            "Look, a shooting star !"
+         ]
+         const smallMeteorDesc = [
+             "This one was too small to be seen",
+             "There is no way you saw this one burning",
+         ]
+         if (detailedMeteor.mass > 100 ) {
+              meteorDesc = bigMeteorDesc[Math.random()*bigMeteorDesc.length]
+         } 
+         else{
+            meteorDesc = smallMeteorDesc[Math.random()*smallMeteorDesc.length]
+         }
+         setDetailedMeteor({
+            ...detailedMeteor,
+            meteorDesc: meteorDesc
+        })
+    }
 
     return (
         <main>
@@ -22,7 +49,7 @@ export const DetailedMeteor = () => {
                 <div className="detailedMeteorText">
                     <h3>{detailedMeteor.name}</h3>
                     <h3>{detailedMeteor.year}</h3>
-                    <h3>You might have seen it burn !</h3>
+                    <h3>{detailedMeteor.meteorDesc}</h3>
                 </div>
                     <div className="detailedMeteorUpperInfo">
                         <div className="meteorInfoCard">
