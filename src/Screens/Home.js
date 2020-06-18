@@ -9,18 +9,17 @@ export const Home = () => {
 
     const ctx = useContext(GlobalContext)
 
-    useEffect(() => {
-        loadYear()
-    }, [])
+    // useEffect(() => {
+    //     loadYear()
+    // }, [])
 
-    const loadYear = (_year = ctx.currentYear) => {
-        API.fetchYear(_year, (json) => {
-            console.log(json)
-        })
-        // API.fetchAvailableYears((json) => {
-        //     console.log(json)
-        // })
-    }
+    // const loadYear = (_year = ctx.currentYear) => {
+    //     API.fetchYear(_year, (json) => {
+    //         console.log(json)
+    //     })
+    // }
+
+    console.log(ctx)
 
     return (
         <main>

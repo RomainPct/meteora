@@ -11,15 +11,22 @@ import {
     Switch,
     Route
   } from 'react-router-dom'
+import API from './managers/API'
 
 function App() {
 
     const [ctx, setCtx] = useState(defaultGlobalContext)
 
     useEffect(() => {
-        setTimeout(() => {
-            setCtx({introductionIsDone: true})
-        }, 3000)
+        API.fetchAvailableYears((availableYears) => {
+            setTimeout(() => {
+                setCtx({
+                    ...ctx,
+                    introductionIsDone: true,
+                    availableYears: availableYears
+                })
+            }, 3000)
+        })
     }, [])
 
     return ( 
