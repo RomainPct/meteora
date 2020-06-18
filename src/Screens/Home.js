@@ -15,15 +15,11 @@ export const Home = () => {
 
     const loadYear = (_year = ctx.currentYear) => {
         API.fetchYear(_year, (json) => {
-            // ctx.set({
-            //     ...ctx,
-            //     years: {
-            //         ...ctx.years,
-            //         _year: json
-            //     }
-            // })
             console.log(json)
         })
+        // API.fetchAvailableYears((json) => {
+        //     console.log(json)
+        // })
     }
 
     return (
