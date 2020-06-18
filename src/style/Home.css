@@ -42,6 +42,7 @@
     height: 100%;
     width: 30%;
     z-index: 5;
+    pointer-events: none;
 }
 
 .homeMainNavigation .timeline .bar {
@@ -50,6 +51,7 @@
     background: url('../assets/images/timeline.svg') center;
     background-size: auto 100%;
     transform: translate(-50%);
+    cursor: grab;
 }
 
 .homeMainNavigation .timeline::before {

@@ -16,6 +16,7 @@ export const Home = () => {
     let offset = null
     const { events } = useScrollOnDrag(timelineRef, {
         runScroll: ({dx}) => {
+            timelineBarRef.current.style.cursor = 'grabbing'
             if (timelineBarWidth === null) {
                 timelineBarWidth = timelineBarRef.current.offsetWidth
             }
@@ -31,7 +32,10 @@ export const Home = () => {
             }
             timelineBarRef.current.style.transform = `translateX(${offset}px)`
         },
-        onDragEnd: () => ( timelineBarWidth = null )
+        onDragEnd: () => {
+            timelineBarWidth = null
+            timelineBarRef.current.style.cursor = 'grab'
+        }
     })
 
     const descriptionTransition = useTransition(
