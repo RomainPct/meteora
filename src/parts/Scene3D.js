@@ -1,36 +1,12 @@
 import '../style/Scene3D.css'
-import React, { useContext, useEffect } from 'react'
-import { Canvas, useThree, useFrame } from 'react-three-fiber'
+import React, { useContext } from 'react'
+import { Canvas } from 'react-three-fiber'
 import { Earth } from './ThreeObjects/Earth'
 import { Meteor } from './ThreeObjects/Meteor'
 import { useLocation, useHistory } from 'react-router-dom'
 import { GlobalContext } from '../contexts/GlobalContext'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-import { DirectionalLight } from 'three'
-
-const CameraController = () => {
-    const { camera, gl, scene } = useThree()
-
-    const controls = new OrbitControls(camera, gl.domElement)
-
-    useEffect(() => {
-        controls.minDistance = 5
-        controls.maxDistance = 6
-        controls.enableDamping = true
-        controls.dampingFactor = 1
-        controls.rotateSpeed = 0.2
-        controls.enablePan = false
-        const light = new DirectionalLight(0xffffff, 1)
-        light.position.x = 5
-        light.position.z = -3
-        camera.add(light)
-        scene.add(camera)
-    },
-    [camera, gl, scene]
-    )
-    return null
-}
-
+import { FixedLight } from './ThreeObjects/FixedLight'
+import { CameraControls } from './ThreeObjects/CameraControls'
 
 export function Scene3D() {
 
@@ -42,8 +18,9 @@ export function Scene3D() {
     return (
         <Canvas id="main3DScene" style={{height:'100vh',width:'100vw'}}>
             <GlobalContext.Provider value={ctx}>
+                <CameraControls />
                 <ambientLight args={[0x404040]}/>
-                <CameraController />
+                <FixedLight />
                 <Earth isRotating={pathname == '/'} />
                 <Meteor history={history} position={[3, 0, 0]}/>
             </GlobalContext.Provider>
