@@ -30,10 +30,8 @@
     position: relative;
     width: 100%;
     height: 40px;
-    background: blue;
+    overflow: hidden;
     margin: 8px 0 24px;
-    background: url('../assets/images/timeline.svg') center;
-    background-size: auto 100%;
 }
 
 .homeMainNavigation .timeline::before,
@@ -43,6 +41,15 @@
     top: 0;
     height: 100%;
     width: 30%;
+    z-index: 5;
+}
+
+.homeMainNavigation .timeline .bar {
+    height: 100%;
+    width: 300%;
+    background: url('../assets/images/timeline.svg') center;
+    background-size: auto 100%;
+    transform: translate(-50%);
 }
 
 .homeMainNavigation .timeline::before {

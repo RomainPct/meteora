@@ -1,13 +1,38 @@
 import '../style/Home.css'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import {useTransition, animated} from 'react-spring'
 import { GlobalContext } from '../contexts/GlobalContext'
 import API from '../managers/API'
 import { YearBarInfo } from '../components/YearBarInfo'
+import useScrollOnDrag from 'react-scroll-ondrag'
 
 export const Home = () => {
 
     const ctx = useContext(GlobalContext)
+
+    const timelineRef = useRef()
+    const timelineBarRef = useRef()
+    let timelineBarWidth = null
+    let offset = null
+    const { events } = useScrollOnDrag(timelineRef, {
+        runScroll: ({dx}) => {
+            if (timelineBarWidth === null) {
+                timelineBarWidth = timelineBarRef.current.offsetWidth
+            }
+            if (offset === null) {
+                offset = timelineBarRef.current.offsetWidth / -2
+            }
+            offset -= dx
+            const absOffset = Math.abs(offset)
+            if (absOffset < timelineBarWidth * 1/3 ) {
+                offset -= timelineBarWidth / 3
+            } else if (absOffset > timelineBarWidth * 2/3 ) {
+                offset += timelineBarWidth / 3
+            }
+            timelineBarRef.current.style.transform = `translateX(${offset}px)`
+        },
+        onDragEnd: () => ( timelineBarWidth = null )
+    })
 
     const descriptionTransition = useTransition(
         ctx.introductionIsDone,
@@ -54,7 +79,9 @@ export const Home = () => {
             {ctx.introductionIsDone ?
                 <div className="homeMainNavigation">
                     <h3>{ctx.currentYear.year}</h3>
-                    <div className="timeline"></div>
+                    <div {...events} className="timeline" ref={timelineRef} >
+                        <div ref={timelineBarRef} className="bar"></div>
+                    </div>
                     <div
                         onClick={_ => ctx.update({ autoNavigationIsPlaying: !ctx.autoNavigationIsPlaying }) }
                         className={ctx.autoNavigationIsPlaying ? "playPauseButton" : "playPauseButton paused"}
