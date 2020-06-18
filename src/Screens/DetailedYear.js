@@ -14,9 +14,9 @@ export const DetailedYear = () => {
 
     function switchMainContent() {
         switch (selectedIndex) {
-            case 0: return <MassDistributionGraph/>
-            case 1: return <MassComparisonGraph/>
-            case 2: return <DangerLevelGraph/>
+            case 0: return <MassDistributionGraph year={year}/>
+            case 1: return <MassComparisonGraph year={year}/>
+            case 2: return <DangerLevelGraph year={year}/>
             default: break
         }
     }

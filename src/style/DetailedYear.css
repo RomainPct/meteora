@@ -1,16 +1,20 @@
 .graphContainer {
     padding-top: 112px;
     height: calc(100vh - 2 * 112px);
+    flex: 3;
 }
 
 .detailedYearContainer{
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .yearInfoContainer{
+    margin: 80px;
+}
+.titleDetailedYear{
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    left: 50%;
+    transform: translateX(-50%);
 }
