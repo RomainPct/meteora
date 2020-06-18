@@ -27,14 +27,41 @@
 }
 
 .homeMainNavigation .timeline {
+    position: relative;
     width: 100%;
     height: 40px;
     background: blue;
     margin: 8px 0 24px;
+    background: url('../assets/images/timeline.svg') center;
+    background-size: auto 100%;
 }
+
+.homeMainNavigation .timeline::before,
+.homeMainNavigation .timeline::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 30%;
+}
+
+.homeMainNavigation .timeline::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(10, 10, 10, 1) 0%, rgba(10, 10, 10, 0) 100%);
+}
+
+.homeMainNavigation .timeline::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(10, 10, 10, 1) 0%, rgba(10, 10, 10, 0) 100%);
+}
+
 
 .homeMainNavigation .playPauseButton {
     height: 40px;
     width: 40px;
     background: red;
+}
+
+.homeMainNavigation .playPauseButton.paused {
+    background: pink;
 }

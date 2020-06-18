@@ -55,7 +55,10 @@ export const Home = () => {
                 <div className="homeMainNavigation">
                     <h3>{ctx.currentYear.year}</h3>
                     <div className="timeline"></div>
-                    <div className="playPauseButton"></div>
+                    <div
+                        onClick={_ => ctx.update({ autoNavigationIsPlaying: !ctx.autoNavigationIsPlaying }) }
+                        className={ctx.autoNavigationIsPlaying ? "playPauseButton" : "playPauseButton paused"}
+                        />
                 </div>
                 :null
             }
