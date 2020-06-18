@@ -24,9 +24,11 @@ export function Earth(props) {
         config: { mass: 3, tension: 100, friction: 200 }
     })
 
-    useFrame(() => (
-        setRotation([rot[0], rot[1] + 0.003, rot[2]])
-    ))
+    useFrame(() => {
+        if (props.isRotating) {
+            setRotation([rot[0], rot[1] + 0.003, rot[2]])
+        }
+    })
 
     return (
         <animated.mesh

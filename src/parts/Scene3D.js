@@ -1,6 +1,6 @@
 import '../style/Scene3D.css'
 import React, { useContext, useEffect } from 'react'
-import { Canvas, useThree } from 'react-three-fiber'
+import { Canvas, useThree, useFrame } from 'react-three-fiber'
 import { Earth } from './ThreeObjects/Earth'
 import { Meteor } from './ThreeObjects/Meteor'
 import { useLocation, useHistory } from 'react-router-dom'
@@ -10,19 +10,21 @@ import { DirectionalLight } from 'three'
 
 const CameraController = () => {
     const { camera, gl, scene } = useThree()
+
+    const controls = new OrbitControls(camera, gl.domElement)
+
     useEffect(() => {
-        const controls = new OrbitControls(camera, gl.domElement)
         controls.minDistance = 5
         controls.maxDistance = 6
         controls.enableDamping = true
         controls.dampingFactor = 1
         controls.rotateSpeed = 0.2
+        controls.enablePan = false
         const light = new DirectionalLight(0xffffff, 1)
         light.position.x = 5
         light.position.z = -3
         camera.add(light)
         scene.add(camera)
-        return () => { controls.update() }
     },
     [camera, gl, scene]
     )
@@ -42,7 +44,7 @@ export function Scene3D() {
             <GlobalContext.Provider value={ctx}>
                 <ambientLight args={[0x404040]}/>
                 <CameraController />
-                <Earth/>
+                <Earth isRotating={pathname == '/'} />
                 <Meteor history={history} position={[3, 0, 0]}/>
             </GlobalContext.Provider>
         </Canvas>
