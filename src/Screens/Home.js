@@ -3,6 +3,7 @@ import React, { useContext, useEffect } from 'react'
 import {useTransition, animated} from 'react-spring'
 import { GlobalContext } from '../contexts/GlobalContext'
 import API from '../managers/API'
+import { YearBarInfo } from '../components/YearBarInfo'
 
 export const Home = () => {
 
@@ -22,7 +23,7 @@ export const Home = () => {
         loadYear()
     }, [])
 
-    const loadYear = (_year = ctx.currentYear) => {
+    const loadYear = (_year = ctx.currentYear.year) => {
         API.fetchYear(_year, (json) => {
             const newYear = {}
             newYear[_year] = json
@@ -45,8 +46,16 @@ export const Home = () => {
                     </animated.div>
             })}
             {ctx.introductionIsDone ?
-                <div className="home-main-view">
-                    <h2>{ctx.currentYear}</h2>
+                <div className="homeMainInformations">
+                    <YearBarInfo year={ctx.currentYear.year} meteorsCount={ctx.currentYear.meteorsCount} withLink={true} />
+                </div>
+                :null
+            }
+            {ctx.introductionIsDone ?
+                <div className="homeMainNavigation">
+                    <h3>{ctx.currentYear.year}</h3>
+                    <div className="timeline"></div>
+                    <div className="playPauseButton"></div>
                 </div>
                 :null
             }

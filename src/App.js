@@ -30,7 +30,8 @@ function App() {
     useEffect(() => {
         API.fetchAvailableYears((availableYears) => {
             updateContext({
-                availableYears: availableYears
+                availableYears: availableYears,
+                currentYear: availableYears[250]
             })
         })
         setTimeout(() => {
