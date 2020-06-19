@@ -77,12 +77,12 @@ export const Home = () => {
         API.fetchYear(_year, (json) => {
             const newYear = {}
             newYear[_year] = json
-            ctx.update({
+            ctx.update(null, currentCtx => ({
                 years: {
-                    ...ctx.years,
+                    ...currentCtx.years,
                     ...newYear
                 }
-            })
+            }))
         })
     }
 
