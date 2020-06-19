@@ -1,3 +1,4 @@
+import '../../style/MassDistributionGraph.css'
 import React from 'react'
 import BubbleChart from '@weknow/react-bubble-chart-d3';
 import { LogLuvEncoding } from 'three';
@@ -74,9 +75,6 @@ export const MassDistributionGraph = (props) => {
 
         });
         
-        console.log(categories);
-        
-        
         return categories
         
 
@@ -92,15 +90,15 @@ export const MassDistributionGraph = (props) => {
             <h2 className="titleDetailedYear">Year {props.year}'s meteors </h2>
             <BubbleChart
   graph= {{
-    zoom: 1.1,
-    offsetX: -0.05,
-    offsetY: -0.01,
+    zoom: 0.7,
+    offsetX: 0.1,
+    offsetY: 0.1,
   }}
   width={800}
   height={600}
   padding={0} // optional value, number that set the padding between bubbles
   showLegend={true} // optional value, pass false to disable the legend.
-  legendPercentage={20} // number that represent the % of with that legend going to use.
+  legendPercentage={10} // number that represent the % of with that legend going to use.
   legendFont={{
         family: 'Arial',
         size: 12,
