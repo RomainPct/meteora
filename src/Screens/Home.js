@@ -13,15 +13,22 @@ export const Home = () => {
     const timelineRef = useRef()
     const timelineBarRef = useRef()
     let timelineBarWidth = null
+    let relativeOffset = null
     let offset = null
     const { events } = useScrollOnDrag(timelineRef, {
-        runScroll: ({dx}) => {
+        onDragStart: () => {
+            timelineBarWidth = timelineBarRef.current.offsetWidth
+            offset = timelineBarRef.current.offsetWidth / -2
             timelineBarRef.current.style.cursor = 'grabbing'
-            if (timelineBarWidth === null) {
-                timelineBarWidth = timelineBarRef.current.offsetWidth
-            }
-            if (offset === null) {
-                offset = timelineBarRef.current.offsetWidth / -2
+            relativeOffset = 0
+        },
+        runScroll: ({dx}) => {
+            relativeOffset -= dx
+            if (Math.abs(relativeOffset) > 40) {
+                ctx.update(null, (currentCtx) => ({
+                    currentMonth: relativeOffset < 0 ? currentCtx.currentMonth + 1 : currentCtx.currentMonth - 1
+                }))
+                relativeOffset = 0
             }
             offset -= dx
             const absOffset = Math.abs(offset)
@@ -82,7 +89,7 @@ export const Home = () => {
             }
             {ctx.introductionIsDone ?
                 <div className="homeMainNavigation">
-                    <h3>{ctx.currentYear.year}</h3>
+                    <h3>{ctx.currentMonth} - {ctx.currentYear.year}</h3>
                     <div {...events} className="timeline" ref={timelineRef} >
                         <div ref={timelineBarRef} className="bar"></div>
                     </div>

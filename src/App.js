@@ -15,11 +15,14 @@ import API from './managers/API'
 
 function App() {
 
-    const updateContext = (newCtx) => {
-        setCtx( currentCtx => ({
-            ...currentCtx,
-            ...newCtx
-        }))
+    const updateContext = (newCtx, handler = null) => {
+        setCtx( currentCtx => {
+            newCtx = handler === null ? newCtx : handler(currentCtx)
+            return {
+                ...currentCtx,
+                ...newCtx
+            }
+        })
     }
 
     const [ctx, setCtx] = useState({
@@ -31,7 +34,7 @@ function App() {
         API.fetchAvailableYears((availableYears) => {
             updateContext({
                 availableYears: availableYears,
-                currentYear: availableYears[250]
+                currentYear: availableYears[ctx.currentYearIndex]
             })
         })
         setTimeout(() => {
