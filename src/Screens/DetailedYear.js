@@ -1,5 +1,5 @@
 import '../style/DetailedYear.css'
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { ButtonBar } from '../components/ButtonBar'
 import { YearBarInfo } from '../components/YearBarInfo'
@@ -16,6 +16,10 @@ export const DetailedYear = () => {
     const yearMeteors = ctx.years[year.year] ?? {}
 
     const [selectedIndex, setSelectedIndex] = useState(1)
+
+    useEffect(() => {
+        ctx.loadYear(year.year)
+    }, [year])
 
     function switchMainContent() {
         switch (selectedIndex) {

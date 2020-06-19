@@ -15,6 +15,20 @@ import API from './managers/API'
 
 function App() {
 
+    const loadYear = (_year) => {
+        if (ctx.years[_year] !== undefined) { return }
+        API.fetchYear(_year, (json) => {
+            const newYear = {}
+            newYear[_year] = json
+            ctx.update(null, currentCtx => ({
+                years: {
+                    ...currentCtx.years,
+                    ...newYear
+                }
+            }))
+        })
+    }
+
     const updateContext = (newCtx, handler = null) => {
         setCtx( currentCtx => {
             newCtx = handler === null ? newCtx : handler(currentCtx)
@@ -27,7 +41,8 @@ function App() {
 
     const [ctx, setCtx] = useState({
         ...defaultGlobalContext,
-        update: updateContext
+        update: updateContext,
+        loadYear: loadYear
     })
 
     useEffect(() => {

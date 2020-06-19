@@ -69,22 +69,8 @@ export const Home = () => {
     )
 
     useEffect(() => {
-        loadYear()
+        ctx.loadYear(ctx.currentYear.year)
     }, [ctx.currentYear])
-
-    const loadYear = (_year = ctx.currentYear.year) => {
-        if (ctx.years[_year] !== undefined) { return }
-        API.fetchYear(_year, (json) => {
-            const newYear = {}
-            newYear[_year] = json
-            ctx.update(null, currentCtx => ({
-                years: {
-                    ...currentCtx.years,
-                    ...newYear
-                }
-            }))
-        })
-    }
 
     const getMonthName = (i) => {
         const months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]
