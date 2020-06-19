@@ -27,7 +27,7 @@ export const DetailedYear = () => {
     }
 
     return (
-        <main>
+        <main className="mainDetailedYear">
             <h1>This is DetailedYear {year.year}</h1>
             <div className="detailedYearContainer">
                 <div className="yearInfoContainer">
