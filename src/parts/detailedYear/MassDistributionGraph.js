@@ -2,7 +2,82 @@ import React from 'react'
 import BubbleChart from '@weknow/react-bubble-chart-d3';
 
 export const MassDistributionGraph = (props) => {
-    console.log(props.meteors);
+
+    function sortMeteorsByMass() {
+        const from1gto50g = []
+        const from50gto100g = []
+        const from100gto150g = []
+        const from150gto200g = []
+        const from200gto250g = []
+        const from250g500g = []
+        const from500gto750g = []
+        const from750gto1kg = []
+        const from1kgto1and5kg = []
+        const from1and5kgto2kg = []
+        const from2kgto2and5kg = []
+        const from2and5kgto3kg = []
+        const from3kgto3and5kg = []
+        const from3and5kgto4kg = []
+        const from4kg = []
+
+        console.log(props.meteors);
+
+        props.meteors.forEach(meteor => {
+
+            if (meteor>0 && meteor<51) {
+                from1gto50g.push(meteor)
+            }
+            if (meteor>50 && meteor<101) {
+                from50gto100g.push(meteor)
+            }
+            if (meteor>100 && meteor<151) {
+                from100gto150g.push(meteor)
+            }
+            if (meteor>150 && meteor<201) {
+                from150gto200g.push(meteor)
+            }
+            if (meteor>200 && meteor<251) {
+                from200gto250g.push(meteor)
+            }
+            if (meteor>250 && meteor<501) {
+                from250g500g.push(meteor)
+            }
+            if (meteor>500 && meteor<751) {
+                from500gto750g.push(meteor)
+            }
+            if (meteor>750&& meteor<1001) {
+                from750gto1kg.push(meteor)
+            }
+            if (meteor>1000&& meteor<1501) {
+                from1kgto1and5kg.push(meteor)
+            }
+            if (meteor>1500&& meteor<2001) {
+                from1and5kgto2kg.push(meteor)
+            }
+            if (meteor>2000&& meteor<2501) {
+                from2kgto2and5kg.push(meteor)
+            }
+            if (meteor>2500&& meteor<3001) {
+                from2and5kgto3kg.push(meteor)
+            }
+            if (meteor>3000&& meteor<3501) {
+                from3kgto3and5kg.push(meteor)
+            }
+            if (meteor>3500&& meteor<4001) {
+                from3and5kgto4kg.push(meteor)
+            }
+            if (meteor>4000) {
+                from4kg.push(meteor)
+            }
+        });
+        
+        
+
+
+    }
+
+
+    sortMeteorsByMass()
 
 
     return (
