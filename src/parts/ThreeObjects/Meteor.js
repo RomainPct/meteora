@@ -8,12 +8,10 @@ export function Meteor(props) {
     
     // Set up state for the hovered and active state
     const [hovered, setHover] = useState(false)
-    const [active, setActive] = useState(false)
 
     const history = props.history
     function handleClick() {
         history.push(`/detailedMeteor/${props.meteor.id}`)
-        setActive(!active)
     }
     
     // Rotate mesh every frame, this is outside of React without overhead
@@ -37,7 +35,7 @@ export function Meteor(props) {
         <mesh
         {...props}
         ref={mesh}
-        scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
+        scale={props.isFocus ? [5, 5, 5] : [1, 1, 1]}
         position={calcPosFromLatLon(props.meteor.reclat, props.meteor.reclong)}
         onClick={handleClick}
         onPointerOver={e => setHover(true)}
