@@ -14,9 +14,7 @@
 
 .header .backButton {
     position: absolute;
-    height: 44px;
     width: 44px;
     left: 40px;
-    background: green;
     margin-right: 16px;
 }
