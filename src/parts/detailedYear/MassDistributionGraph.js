@@ -2,9 +2,9 @@ import React from 'react'
 import BubbleChart from '@weknow/react-bubble-chart-d3';
 
 export const MassDistributionGraph = (props) => {
+    console.log(props.meteors);
 
-  // props.meteors
-    
+
     return (
         <section>
             <h2 className="titleDetailedYear">Year {props.year}'s meteors </h2>
@@ -60,4 +60,5 @@ export const MassDistributionGraph = (props) => {
 />
         </section>
     )
+    
 }
