@@ -2,6 +2,7 @@ import '../style/Scene3D.css'
 import React, { useContext } from 'react'
 import { Canvas } from 'react-three-fiber'
 import { Earth } from './ThreeObjects/Earth'
+import { EarthAtmosphere } from './ThreeObjects/EarthAtmosphere'
 import { Meteor } from './ThreeObjects/Meteor'
 import { useLocation, useHistory } from 'react-router-dom'
 import { GlobalContext } from '../contexts/GlobalContext'
@@ -22,6 +23,7 @@ export function Scene3D() {
                 <ambientLight args={[0x404040]}/>
                 <FixedLight />
                 <Earth isRotating={pathname === '/'} />
+                <EarthAtmosphere isRotating={pathname === '/'} />
                 <Meteor history={history} position={[3, 0, 0]}/>
             </GlobalContext.Provider>
         </Canvas>

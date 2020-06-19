@@ -1,18 +1,14 @@
 import React, { useState, useRef, useMemo, useContext } from 'react'
-import earthTexture from '../../assets/textures/2k_earth_daymap.jpg'
-import earthNormalMap from '../../assets/textures/2k_earth_normal_map.jpg'
-import earthSpecularMap from '../../assets/textures/2k_earth_specular_map.jpg'
+import earthCloudsTexture from '../../assets/textures/2k_earth_clouds.jpg'
 import { useFrame } from 'react-three-fiber'
-import { TextureLoader, MeshPhongMaterial, Vector2 } from 'three'
+import { TextureLoader, MeshPhongMaterial } from 'three'
 import { useSpring, animated } from 'react-spring/three'
 import { GlobalContext } from '../../contexts/GlobalContext'
 
-export function Earth(props) {
+export function EarthAtmosphere(props) {
 
     const mesh = useRef()
-    const texture = useMemo(() => new TextureLoader().load(earthTexture), [])
-    const normalMap = useMemo(() => new TextureLoader().load(earthNormalMap), [])
-    const specularMap = useMemo(() => new TextureLoader().load(earthSpecularMap), [])
+    const texture = useMemo(() => new TextureLoader().load(earthCloudsTexture), [])
 
     const [rot, setRotation] = useState([0.4, 0, 0.4])
 
@@ -26,7 +22,7 @@ export function Earth(props) {
 
     useFrame(() => {
         if (props.isRotating) {
-            setRotation([rot[0], rot[1] + 0.002, rot[2]])
+            setRotation([rot[0], rot[1] + 0.001, rot[2]])
         }
     })
 
@@ -38,12 +34,11 @@ export function Earth(props) {
             scale={earthScale}
             material={new MeshPhongMaterial({
                 map: texture,
-                normalMap: normalMap,
-                specularMap: specularMap,
-                normalScale: new Vector2( 10, 10 )
+                alphaMap: texture,
+                transparent: true
             })}
             >
-            <sphereBufferGeometry attach="geometry" args={[3, 50, 50]} />
+            <sphereBufferGeometry attach="geometry" args={[3.01, 50, 50]} />
         </animated.mesh>
         )
 }
