@@ -29,10 +29,7 @@ export const Header = () => {
     return (
         <header>
             <Link className="header" to="/">
-                <animated.div style={backButtonSpring}>
-                    <img  className="backButton" src={backSpace} alt="Meteora logo"/>
-
-                </animated.div>
+                <animated.img style={backButtonSpring} className="backButton" src={backSpace} alt="Meteora logo"/>
                 <animated.div style={headerSpring}>
                     <img className="meteora-logo" src={meteoraLogo} alt="Meteora logo"/>
                 </animated.div>

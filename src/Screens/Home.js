@@ -55,7 +55,6 @@ export const Home = () => {
         onDragEnd: () => {
             timelineBarWidth = null
             timelineBarRef.current.style.cursor = 'grab'
-            // loadYear()
         }
     })
 
@@ -71,14 +70,10 @@ export const Home = () => {
 
     useEffect(() => {
         loadYear()
-    }, [])
+    }, [ctx.currentYear])
 
     const loadYear = (_year = ctx.currentYear.year) => {
-        console.log(ctx)
-        if (ctx.years[_year] !== undefined) {
-            console.log(`cancel`)
-            return
-        }
+        if (ctx.years[_year] !== undefined) { return }
         API.fetchYear(_year, (json) => {
             const newYear = {}
             newYear[_year] = json
