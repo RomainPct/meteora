@@ -16,14 +16,14 @@ import API from './managers/API'
 function App() {
 
     const loadYear = (_year) => {
-        if (ctx.years[_year] !== undefined) { return }
+        if (ctx.meteorsByYear[_year] !== undefined) { return }
         API.fetchYear(_year, (json) => {
-            const newYear = {}
-            newYear[_year] = json
+            const meteorsThisYear = {}
+            meteorsThisYear[_year] = json
             ctx.update(null, currentCtx => ({
-                years: {
-                    ...currentCtx.years,
-                    ...newYear
+                meteorsByYear: {
+                    ...currentCtx.meteorsByYear,
+                    ...meteorsThisYear
                 }
             }))
         })

@@ -5,7 +5,7 @@ export const defaultGlobalContext = {
     currentYear: { year: 2000, meteorsCount: 0 },
     currentYearIndex: 250,
     currentMonth: 1,
-    years: {},
+    meteorsByYear: {},
     availableYears: [],
     autoNavigationIsPlaying: true,
     update: (newCtx = null, handler = null) => {},

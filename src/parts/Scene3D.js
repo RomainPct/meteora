@@ -16,6 +16,11 @@ export function Scene3D() {
 
     const ctx = useContext(GlobalContext)
 
+    function meteorsToDisplay() {
+        const meteors = ctx.meteorsByYear[ctx.currentYear.year] ?? []
+        return meteors.slice(ctx.currentMonth - 1, meteors.length / 12 * ctx.currentMonth)
+    }
+
     return (
         <Canvas id="main3DScene" style={{height:'100vh',width:'100vw'}}>
             <GlobalContext.Provider value={ctx}>
@@ -24,7 +29,9 @@ export function Scene3D() {
                 <FixedLight />
                 <Earth isRotating={pathname === '/'} />
                 <EarthAtmosphere isRotating={pathname === '/'} />
-                <Meteor history={history} position={[3, 0, 0]}/>
+                {meteorsToDisplay().map((meteor, key) => {
+                    return <Meteor meteor={meteor} key={key} history={history} />
+                })}
             </GlobalContext.Provider>
         </Canvas>
         )

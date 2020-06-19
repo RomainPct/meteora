@@ -13,7 +13,7 @@ export const DetailedYear = () => {
     const ctx = useContext(GlobalContext)
     const { yearIndex } = useParams()
     const year = ctx.availableYears[yearIndex] ?? {}
-    const yearMeteors = ctx.years[year.year] ?? {}
+    const yearMeteors = ctx.meteorsByYear[year.year] ?? {}
 
     const [selectedIndex, setSelectedIndex] = useState(1)
 
