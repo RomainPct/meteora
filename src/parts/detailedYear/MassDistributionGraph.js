@@ -1,8 +1,9 @@
 import React from 'react'
-import { applyProps, render } from '../../../node_modules/react-three-fiber';
 import BubbleChart from '@weknow/react-bubble-chart-d3';
 
 export const MassDistributionGraph = (props) => {
+
+  // props.meteors
     
     return (
         <section>

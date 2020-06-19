@@ -13,14 +13,15 @@ export const DetailedYear = () => {
     const ctx = useContext(GlobalContext)
     const { yearIndex } = useParams()
     const year = ctx.availableYears[yearIndex] ?? {}
+    const yearMeteors = ctx.years[year] ?? {}
 
     const [selectedIndex, setSelectedIndex] = useState(1)
 
     function switchMainContent() {
         switch (selectedIndex) {
-            case 0: return <MassDistributionGraph year={year.year}/>
-            case 1: return <MassComparisonGraph year={year.year}/>
-            case 2: return <DangerLevelGraph year={year.year}/>
+            case 0: return <MassDistributionGraph year={year.year} meteors={yearMeteors} />
+            case 1: return <MassComparisonGraph year={year.year} meteors={yearMeteors}  />
+            case 2: return <DangerLevelGraph year={year.year} />
             default: break
         }
     }
