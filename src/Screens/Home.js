@@ -1,8 +1,7 @@
 import '../style/Home.css'
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import {useTransition, animated} from 'react-spring'
 import { GlobalContext } from '../contexts/GlobalContext'
-import API from '../managers/API'
 import { YearBarInfo } from '../components/YearBarInfo'
 import useScrollOnDrag from 'react-scroll-ondrag'
 
