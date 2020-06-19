@@ -21,10 +21,10 @@ export const YearBarInfo = (props) => {
         API.fetchSmallestMeteor(props.year, (response) => {
             setSmallestMeteor(response)
         })
-    }, [])
+    }, [props.year])
 
     const openDetailedYear = () => {
-        history.push(`/detailedYear/${props.year}`)
+        history.push(`/detailedYear/${props.withLinkTo}`)
     }
 
     return (
@@ -36,7 +36,7 @@ export const YearBarInfo = (props) => {
                 <div className="yearBarAvMass">{medianWeight} med. mass</div>
                 <div className="yearBarMassMin">{smallestMeteor.mass} mass min</div>
                 <div className="yearBarMassMax">{biggestMeteor.mass} highest mass</div>
-                {props.withLink ?
+                {props.withLinkTo ?
                     <div onClick={openDetailedYear} className="yearLink">
                         Discover some stats about this year
                     </div>

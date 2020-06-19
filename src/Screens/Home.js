@@ -25,9 +25,22 @@ export const Home = () => {
         runScroll: ({dx}) => {
             relativeOffset -= dx
             if (Math.abs(relativeOffset) > 40) {
-                ctx.update(null, (currentCtx) => ({
-                    currentMonth: relativeOffset < 0 ? currentCtx.currentMonth + 1 : currentCtx.currentMonth - 1
-                }))
+                ctx.update(null, (currentCtx) => {
+                    let nextMonth = relativeOffset < 0 ? currentCtx.currentMonth + 1 : currentCtx.currentMonth - 1
+                    let yearIndex = currentCtx.currentYearIndex
+                    if (nextMonth > 12) {
+                        yearIndex++
+                        nextMonth = 1
+                    } else if (nextMonth < 1) {
+                        yearIndex--
+                        nextMonth = 12
+                    }
+                    return {
+                        currentYearIndex: yearIndex,
+                        currentMonth: nextMonth,
+                        currentYear: currentCtx.availableYears[yearIndex]
+                    }
+                })
                 relativeOffset = 0
             }
             offset -= dx
@@ -72,6 +85,11 @@ export const Home = () => {
         })
     }
 
+    const getMonthName = (i) => {
+        const months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]
+        return months[i-1]
+    }
+
     return (
         <main>
             <h1>This is home</h1>
@@ -83,13 +101,13 @@ export const Home = () => {
             })}
             {ctx.introductionIsDone ?
                 <div className="homeMainInformations">
-                    <YearBarInfo year={ctx.currentYear.year} meteorsCount={ctx.currentYear.meteorsCount} withLink={true} />
+                    <YearBarInfo year={ctx.currentYear.year} meteorsCount={ctx.currentYear.meteorsCount} withLinkTo={ctx.currentYearIndex} />
                 </div>
                 :null
             }
             {ctx.introductionIsDone ?
                 <div className="homeMainNavigation">
-                    <h3>{ctx.currentMonth} - {ctx.currentYear.year}</h3>
+                    <h3>{getMonthName(ctx.currentMonth)} - {ctx.currentYear.year}</h3>
                     <div {...events} className="timeline" ref={timelineRef} >
                         <div ref={timelineBarRef} className="bar"></div>
                     </div>

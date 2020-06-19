@@ -53,7 +53,7 @@ function App() {
                     <Route path="/detailedMeteor/:id">
                         <DetailedMeteor/>
                     </Route>
-                    <Route path="/detailedYear/:year">
+                    <Route path="/detailedYear/:yearIndex">
                         <DetailedYear/>
                     </Route>
                     <Route exact path="/">
