@@ -100,19 +100,19 @@ export const MassDistributionGraph = (props) => {
   showLegend={true} // optional value, pass false to disable the legend.
   legendPercentage={10} // number that represent the % of with that legend going to use.
   legendFont={{
-        family: 'Arial',
-        size: 12,
-        color: '#000',
+        family: 'Quicksand',
+        size: 15,
+        color: '#fff',
         weight: 'bold',
       }}
   valueFont={{
-        family: 'Arial',
+        family: 'Quicksand',
         size: 12,
         color: '#fff',
         weight: 'bold',
       }}
   labelFont={{
-        family: 'Arial',
+        family: 'Quicksand',
         size: 16,
         color: '#fff',
         weight: 'bold',
