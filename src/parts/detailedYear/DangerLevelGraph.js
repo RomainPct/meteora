@@ -1,7 +1,16 @@
-import React from 'react'
 import '../../style/DangerLevel.css'
+import React, { useState, useEffect } from 'react'
+import API from '../../managers/API'
 
 export const DangerLevelGraph = (props) => {
+
+    const [biggestMeteor, setBiggestMeteor] = useState({})
+
+    useEffect(() => {
+        API.fetchBiggestMeteor(props.year, (response) => {
+            setBiggestMeteor(response)
+        })
+    }, [props.year])
 
     return (
         <section className="containerDanger">
@@ -11,7 +20,7 @@ export const DangerLevelGraph = (props) => {
                     <h3 className="dangerTextBiggest">Most massive <br></br> meteor this year :</h3>
                     <div className="circleDanger">
                         <div className="circleText">
-                            1,5
+                            {biggestMeteor.mass}g
                         </div>
                     </div>
                 </div>
