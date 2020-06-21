@@ -22,7 +22,7 @@ export const DetailedMeteor = () => {
         const bigMeteorDesc = [
             "You might have seen it burn !",
             "It was massive enough to be seen !",
-            "Where you around when it was burning ?",
+            "Were you around when it was burning ?",
             "There is a chance you have seen it burning !",
             "Look, a shooting star !"
          ]
