@@ -13,7 +13,7 @@ export const Header = () => {
     const { pathname } = useLocation()
 
     const headerSpring = useSpring({
-        transform: ctx.introductionIsDone
+        transform: ctx.introductionIsDone !== null
             ? (pathname === '/'
                 ? 'translateX(0vw) translateX(0px) translateX(0%) translateY(0%) scale(1)'
                 : 'translateX(0vw) translateX(80px) translateX(0%) translateY(0%) scale(1)'

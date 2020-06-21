@@ -58,7 +58,7 @@ export const Home = () => {
     })
 
     const descriptionTransition = useTransition(
-        ctx.introductionIsDone,
+        ctx.introductionIsDone !== null,
         null,
         {
             from: { opacity: 1, transform: 'scale(1)' },
@@ -85,13 +85,13 @@ export const Home = () => {
                         <h3 className="homeCatchphrase">All known meteors since the IXth century</h3>
                     </animated.div>
             })}
-            {ctx.introductionIsDone ?
+            {ctx.introductionIsDone === true ?
                 <div className="homeMainInformations">
                     <YearBarInfo year={ctx.currentYear.year} meteorsCount={ctx.currentYear.meteorsCount} withLinkTo={ctx.currentYearIndex} />
                 </div>
                 :null
             }
-            {ctx.introductionIsDone ?
+            {ctx.introductionIsDone === true ?
                 <div className="homeMainNavigation">
                     <h3>{getMonthName(ctx.currentMonth)} - {ctx.currentYear.year}</h3>
                     <div {...events} className="timeline" ref={timelineRef} >

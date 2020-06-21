@@ -54,7 +54,7 @@ function App() {
         })
         setTimeout(() => {
             updateContext({
-                introductionIsDone: true
+                introductionIsDone: false
             })
         }, 3000)
     }, [])

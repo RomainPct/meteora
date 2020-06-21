@@ -15,9 +15,9 @@ export function EarthAtmosphere(props) {
     const ctx = useContext(GlobalContext)
 
     const { earthPos, earthScale } = useSpring({
-        earthPos: ctx.introductionIsDone ? [0, 0, 0] : [0, -4, 0],
-        earthScale: ctx.introductionIsDone ? [0.5, 0.5, 0.5] : [1, 1, 1],
-        config: { mass: 2, tension: 100, friction: 200 }
+        earthPos: ctx.introductionIsDone !== null ? [0, 0, 0] : [0, -4, 0],
+        earthScale: ctx.introductionIsDone !== null ? [0.5, 0.5, 0.5] : [1, 1, 1],
+        config: { mass: 1.5, tension: 200, friction: 120 }
     })
 
     useFrame(() => {

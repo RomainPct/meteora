@@ -17,7 +17,7 @@ export function Scene3D() {
     const ctx = useContext(GlobalContext)
 
     function meteorsToDisplay() {
-        if (ctx.introductionIsDone === false) { return [] }
+        if (ctx.introductionIsDone !== true) { return [] }
         const meteors = ctx.meteorsByYear[ctx.currentYear.year] ?? []
         const meteorsGroup = meteors.length / 12
         const month = ctx.currentMonth
