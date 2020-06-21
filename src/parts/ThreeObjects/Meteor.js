@@ -23,13 +23,12 @@ export function Meteor(props) {
     }, [])
 
     const { meteorPos } = useSpring({
-        meteorPos: isLaunched ? computePos(props.meteor.reclat, props.meteor.reclong) : computePos(props.meteor.reclat, props.meteor.reclong, true),
+        meteorPos: isLaunched ? computePos() : computePos(true),
         config: {
             mass: Math.min(Math.max(props.meteor.mass / 30, 1), 5),
             tension: 100,
             friction: Math.min(Math.max(props.meteor.mass, 150), 1000),
             clamp: true,
-            velocity: 1,
             easing: t => t*t*t
         },
         onRest: () => {
@@ -40,17 +39,13 @@ export function Meteor(props) {
     // Rotate mesh every frame, this is outside of React without overhead
     useFrame(() => (mesh.current.rotation.x = mesh.current.rotation.y += 0.01))
 
-    function computePos(lat, lon, offset = false) {
-        lat = (Math.random() * 360) - 180
-        lon = (Math.random() * 360) - 180
-        const radius = offset ? 4 : 1.6
-        if (offset) {
-            lat += (Math.random() * 80) - 40
-            lon += (Math.random() * 80) - 40
-        }
+    function computePos(startPoint = false) {
+        let long = startPoint ? props.meteor.startLong : props.meteor.long
+        let lat = startPoint ? props.meteor.startLat : props.meteor.lat
+        const radius = startPoint ? 4 : 1.6
         const spherical = new Spherical(
           radius,
-          ThreeMath.degToRad(lon),
+          ThreeMath.degToRad(long),
           ThreeMath.degToRad(lat)
         )
         const vector = new Vector3()
