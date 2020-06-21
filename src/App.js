@@ -16,22 +16,25 @@ import API from './managers/API'
 function App() {
 
     const loadYear = (_year) => {
-        if (ctx.meteorsByYear[_year] !== undefined) { return }
-        API.fetchYear(_year, (json) => {
-            const meteorsThisYear = {}
-            meteorsThisYear[_year] = json.map((meteor) => {
-                meteor.long = (Math.random() * 360) - 180
-                meteor.lat = (Math.random() * 360) - 180
-                meteor.startLong = meteor.long + (Math.random() * 80) - 40
-                meteor.startLat = meteor.lat + (Math.random() * 80) - 40
-                return meteor
+        ctx.update(null, currentCtx => {
+            if (currentCtx.meteorsByYear[_year] !== undefined) { return {} }
+            API.fetchYear(_year, (json) => {
+                const meteorsThisYear = {}
+                meteorsThisYear[_year] = json.map((meteor) => {
+                    meteor.long = (Math.random() * 360) - 180
+                    meteor.lat = (Math.random() * 360) - 180
+                    meteor.startLong = meteor.long + (Math.random() * 80) - 40
+                    meteor.startLat = meteor.lat + (Math.random() * 80) - 40
+                    return meteor
+                })
+                ctx.update(null, currentCtx => ({
+                    meteorsByYear: {
+                        ...currentCtx.meteorsByYear,
+                        ...meteorsThisYear
+                    }
+                }))
             })
-            ctx.update(null, currentCtx => ({
-                meteorsByYear: {
-                    ...currentCtx.meteorsByYear,
-                    ...meteorsThisYear
-                }
-            }))
+            return {}
         })
     }
 

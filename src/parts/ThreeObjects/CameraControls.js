@@ -13,13 +13,13 @@ export const CameraControls = () => {
     const controls = useRef()
     useEffect(() => {
         const steps = {
-            x: (ctx.cameraPosition.x - camera.position.x) / 30,
-            y: (ctx.cameraPosition.y - camera.position.y) / 30,
-            z: (ctx.cameraPosition.z - camera.position.z) / 30
+            x: (ctx.cameraPosition.x - camera.position.x) / 45,
+            y: (ctx.cameraPosition.y - camera.position.y) / 45,
+            z: (ctx.cameraPosition.z - camera.position.z) / 45
         }
-        for (let i = 0; i <= 30; i++) {
+        for (let i = 0; i <= 45; i++) {
             setTimeout(() => {
-                if (i === 30) {
+                if (i === 45) {
                     camera.position.set(ctx.cameraPosition.x, ctx.cameraPosition.y, ctx.cameraPosition.z)
                 } else {
                     camera.position.set(camera.position.x + steps.x, camera.position.y + steps.y, camera.position.z + steps.z)

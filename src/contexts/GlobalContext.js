@@ -8,11 +8,7 @@ export const defaultGlobalContext = {
     meteorsByYear: {},
     availableYears: [],
     autoNavigationIsPlaying: true,
-    cameraPosition: {
-        x: 0,
-        y: 0,
-        z: 5
-    },
+    cameraPosition: { x: 0, y: 0, z: 5 },
     update: (newCtx = null, handler = null) => {},
     loadYear: (_year = null) => {}
 }

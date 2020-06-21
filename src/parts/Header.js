@@ -31,7 +31,8 @@ export const Header = () => {
         ctx.update(null, (currentCtx) => ({
             ...currentCtx,
             autoNavigationIsPlaying: true,
-            introductionIsDone: true
+            introductionIsDone: true,
+            cameraPosition: { x: 0, y: 0, z: 5 }
         }))
         history.push(`/`)
     }
