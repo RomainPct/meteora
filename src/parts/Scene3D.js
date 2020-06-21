@@ -59,10 +59,16 @@ export function Scene3D() {
         })
     )
 
-    const handleClick = (id) => {
+    const handleClick = (id, index) => {
+        const pos = meteorsAnim[index].position.payload
         ctx.update(null, (currentCtx) => ({
             ...currentCtx,
-            autoNavigationIsPlaying: false
+            autoNavigationIsPlaying: false,
+            cameraPosition: {
+                x: pos[0].value,
+                y: pos[1].value,
+                z: pos[2].value
+            }
         }))
         history.push(`/detailedMeteor/${id}`)
     }
@@ -84,7 +90,7 @@ export function Scene3D() {
                 {meteorsAnim.map( (props, i) => (
                     <Meteor
                         {...props}
-                        onClick={_ => handleClick(meteors[i].id)}
+                        onClick={_ => handleClick(meteors[i], i)}
                         meteor={meteors[i]}
                         key={meteors[i].id}
                         isFocus={pathname.includes(`/detailedMeteor/${meteors[i].id}`)}

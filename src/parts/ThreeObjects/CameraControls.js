@@ -1,12 +1,33 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect, useContext } from 'react'
 import { useThree, useFrame, extend } from 'react-three-fiber'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
+import { GlobalContext } from '../../contexts/GlobalContext';
 
 extend({ OrbitControls });
 
 export const CameraControls = () => {
-    const {    camera,    gl: { domElement },  } = useThree()
+
+    const ctx = useContext(GlobalContext)
+
+    const { camera, gl: { domElement } } = useThree()
     const controls = useRef()
+    useEffect(() => {
+        const steps = {
+            x: (ctx.cameraPosition.x - camera.position.x) / 30,
+            y: (ctx.cameraPosition.y - camera.position.y) / 30,
+            z: (ctx.cameraPosition.z - camera.position.z) / 30
+        }
+        for (let i = 0; i <= 30; i++) {
+            setTimeout(() => {
+                if (i === 30) {
+                    camera.position.set(ctx.cameraPosition.x, ctx.cameraPosition.y, ctx.cameraPosition.z)
+                } else {
+                    camera.position.set(camera.position.x + steps.x, camera.position.y + steps.y, camera.position.z + steps.z)
+                }
+                controls.current.update()
+            }, 1000/60 * i);
+        }
+    }, [ctx.cameraPosition])
     useFrame(() => controls.current.update())
     return <orbitControls
                 ref={controls}
