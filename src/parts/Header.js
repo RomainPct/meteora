@@ -4,11 +4,12 @@ import meteoraLogo from '../assets/images/logo.svg'
 import backSpace from '../assets/images/keyboard_backspace-white-18dp.svg'
 import { useLocation } from 'react-router-dom'
 import { GlobalContext } from '../contexts/GlobalContext'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import {useSpring, animated} from 'react-spring'
 
 export const Header = () => {
 
+    const history = useHistory()
     const ctx = useContext(GlobalContext)
     const { pathname } = useLocation()
 
@@ -26,14 +27,21 @@ export const Header = () => {
         opacity: pathname === '/' ? 0 : 1
     })
 
+    const goBackHome = () => {
+        ctx.update(null, (currentCtx) => ({
+            ...currentCtx,
+            autoNavigationIsPlaying: true,
+            introductionIsDone: true
+        }))
+        history.push(`/`)
+    }
+
     return (
-        <header>
-            <Link className="header" to="/">
-                <animated.img style={backButtonSpring} className="backButton" src={backSpace} alt="Meteora logo"/>
-                <animated.div style={headerSpring}>
-                    <img className="meteora-logo" src={meteoraLogo} alt="Meteora logo"/>
-                </animated.div>
-            </Link>
+        <header onClick={goBackHome} >
+            <animated.img style={backButtonSpring} className="backButton" src={backSpace} alt="Meteora logo"/>
+            <animated.div style={headerSpring}>
+                <img className="meteora-logo" src={meteoraLogo} alt="Meteora logo"/>
+            </animated.div>
         </header>
     )
 }

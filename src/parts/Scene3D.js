@@ -44,12 +44,8 @@ export function Scene3D() {
     const [ meteorsAnim, setMeteorsAnim, stopMeteorsAnim ] = useSprings(
         meteors.length,
         i => ({
-            from: {
-                position: computePos(meteors[i], true)
-            },
-            to: {
-                position: computePos(meteors[i])
-            },
+            from: { position: computePos(meteors[i], true) },
+            to: { position: computePos(meteors[i]) },
             config: {
                 mass: Math.min(Math.max(meteors[i].mass / 30, 1), 5),
                 tension: 100,

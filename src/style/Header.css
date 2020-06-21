@@ -1,18 +1,19 @@
-.header {
+header {
     position: fixed;
     top: 0;
     z-index: 200;
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
-.header .meteora-logo {
+header .meteora-logo {
     height: 32px;
     margin: 24px;
     padding: 16px;
 }
 
-.header .backButton {
+header .backButton {
     position: absolute;
     width: 44px;
     left: 40px;
