@@ -48,6 +48,10 @@
     background: #243859;
     border-radius: 50%;
     position: absolute;
-    top: -900%;
+    top: -700%;
     z-index: -1000;
+}
+
+.massDino{
+    text-align: center;
 }
