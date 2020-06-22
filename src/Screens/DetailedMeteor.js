@@ -57,17 +57,20 @@ export const DetailedMeteor = () => {
                     </div>
                     <div className="detailedMeteorLowerInfo">
                         <div className="meteorInfoCard">
-                            <p>FALL LOCATION</p>
-                            <h3>{detailedMeteor.country}<span role="img" aria-label="mexico">{detailedMeteor.flag}</span></h3>
-                            <p className="infoDesc"> near {detailedMeteor.city}</p>
+                            <p>IDENTIFIED FROM</p>
+                            <h3>{detailedMeteor.country == null ? "Unknown location" : detailedMeteor.country }<span role="img" aria-label="mexico">{detailedMeteor.flag == null ? "" : detailedMeteor.flag }</span></h3>
+                            <p className="infoDesc">{detailedMeteor.city == null ? "" : detailedMeteor.city }</p>
                         </div>
                         <div className="meteorInfoCard">
                             <p>DESTRUCTIVE POWER</p>
-                            <h3>{detailedMeteor.energy_in_joules}J</h3>
+                            <h3>{detailedMeteor.energy_in_kWh}kWh</h3>
                             <p className="infoDesc">{detailedMeteor.energy_comparison}</p>
                         </div>
                     </div>
             </div>
         </main>
+
     )
+    
+    
 }

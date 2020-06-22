@@ -68,9 +68,13 @@
 .homeMainNavigation .playPauseButton {
     height: 40px;
     width: 40px;
-    background: red;
+    background-image: url("../assets/images/pause-white-18dp.svg");
+    background-repeat: no-repeat;
 }
 
 .homeMainNavigation .playPauseButton.paused {
-    background: pink;
+    height: 40px;
+    width: 40px;
+    background-image: url("../assets/images/play_arrow-white-18dp.svg");
+    background-repeat: no-repeat;
 }

@@ -87,9 +87,9 @@ export function Scene3D() {
 
     useEffect(() => {
         setMeteorsAnim(i => ({
-            to: { position: ctx.autoNavigationIsPlaying ? computePos(meteors[i]) : meteorsAnim[i].position.payload }
+            to: { position: ctx.autoNavigationIsPlaying && pathname === '/' ? computePos(meteors[i]) : meteorsAnim[i].position.payload }
         }))
-    }, [ctx.autoNavigationIsPlaying])
+    }, [ctx.autoNavigationIsPlaying, pathname])
 
     return (
         <Canvas id="main3DScene" style={{height:'100vh',width:'100vw'}}>

@@ -1,13 +1,42 @@
-.circleBig{
-    background-color: #A6D9DC;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
+.containerCenter{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 30;
+}
+
+.circleContainer{
+    position: relative;
+}
+
+.bigContainer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.medContainer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.smallContainer{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.circleBig{
+    background-color: #A6D9DC;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    min-width: 50px;
+    min-height: 50px;
 }
 
 .circleMed{
@@ -15,11 +44,8 @@
     width: 250px;
     height: 250px;
     border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -2;
+    min-width: 50px;
+    min-height: 50px;
 }
 
 .circleSmall{
@@ -27,13 +53,14 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -2;
+    min-width: 50px;
+    min-height: 50px;
 }
 
 .textComparison{
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }

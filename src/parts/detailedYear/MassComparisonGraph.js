@@ -23,16 +23,19 @@ export const MassComparisonGraph = (props) => {
     return (
         <section>
             <h2 className="titleDetailedYear">Year {props.year}’s average mass</h2>
-            <div className="circleContainer">
-                <div className="circleBig">
-                    <div className="textComparison">{biggestMeteor.mass}g max</div>
-                    <div className="circleMed">
+            <div className="containerCenter">
+                <div className="circleContainer">
+                    <div className="bigContainer">
+                        <div className="textComparison">{biggestMeteor.mass}g max</div>
+                        <div className="circleBig"></div>
+                    </div>
+                    <div className="medContainer">
                         <div className="textComparison">{medianWeight}g med. mass</div>
-                        <div className="circleSmall">
-                            <div className="textComparison">
-                            {smallestMeteor.mass}g min
-                            </div>
-                        </div>
+                        <div className="circleMed"></div>
+                    </div>
+                    <div className="smallContainer">
+                        <div className="textComparison">{smallestMeteor.mass}g min</div>
+                        <div className="circleSmall"></div>
                     </div>
                 </div>
             </div>
