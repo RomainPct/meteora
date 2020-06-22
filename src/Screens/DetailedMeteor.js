@@ -33,6 +33,7 @@ export const DetailedMeteor = () => {
          return (mass > 100) ? bigMeteorDesc[Math.floor(Math.random()*bigMeteorDesc.length)] : smallMeteorDesc[Math.floor(Math.random()*smallMeteorDesc.length)]
     }
 
+    
     return (
         <main>
             <h1>This is DetailedMeteor {detailedMeteor.id}</h1>
@@ -51,19 +52,19 @@ export const DetailedMeteor = () => {
                         <div className="meteorInfoCard">
                             <p>MASS</p>
                             <h3>{detailedMeteor.mass}g</h3>
-                            <p className="infoDesc">As heavy as a smartphone ! <span role="img" aria-label="smartphone">📱</span></p>
+                            <p className="infoDesc">{detailedMeteor.mass_comparison}</p>
                         </div>
                     </div>
                     <div className="detailedMeteorLowerInfo">
                         <div className="meteorInfoCard">
                             <p>FALL LOCATION</p>
-                            <h3>Mexico <span role="img" aria-label="mexico">🇲🇽</span></h3>
-                            <p className="infoDesc">near Mexico city</p>
+                            <h3>{detailedMeteor.country}<span role="img" aria-label="mexico">{detailedMeteor.flag}</span></h3>
+                            <p className="infoDesc"> near {detailedMeteor.city}</p>
                         </div>
                         <div className="meteorInfoCard">
                             <p>DESTRUCTIVE POWER</p>
-                            <h3>80k Newtons</h3>
-                            <p className="infoDesc">The power of Niagara Falls <span role="img" aria-label="power">🌊</span></p>
+                            <h3>{detailedMeteor.energy_in_joules}J</h3>
+                            <p className="infoDesc">{detailedMeteor.energy_comparison}</p>
                         </div>
                     </div>
             </div>
