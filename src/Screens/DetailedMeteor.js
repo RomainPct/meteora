@@ -47,7 +47,7 @@ export const DetailedMeteor = () => {
                         <div className="meteorInfoCard">
                             <p>CLASS</p>
                             <h3>{detailedMeteor.recclass}</h3>
-                            <p className="infoDesc">Low-Iron meteor</p>
+                            <p className="infoDesc">{detailedMeteor.classification_description}</p>
                         </div>
                         <div className="meteorInfoCard">
                             <p>MASS</p>
