@@ -25,6 +25,8 @@ function App() {
                     meteor.lat = (Math.random() * 360) - 180
                     meteor.startLong = meteor.long + (Math.random() * 80) - 40
                     meteor.startLat = meteor.lat + (Math.random() * 80) - 40
+                    meteor.fallDuration = ((Math.random() * 10) + 10) * 1000
+                    meteor.startDistance = Math.random() * 4
                     return meteor
                 })
                 ctx.update(null, currentCtx => ({

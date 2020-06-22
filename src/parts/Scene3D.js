@@ -34,7 +34,7 @@ export function Scene3D() {
     function computePos(meteor, startPoint = false) {
         let long = startPoint ? meteor.startLong : meteor.long
         let lat = startPoint ? meteor.startLat : meteor.lat
-        const radius = startPoint ? 4 : 1.6
+        const radius = startPoint ? 4 + meteor.startDistance : 1.6
         const spherical = new Spherical(
           radius,
           ThreeMath.degToRad(long),
@@ -52,11 +52,9 @@ export function Scene3D() {
             from: { position: computePos(meteors[i], true) },
             to: { position: computePos(meteors[i]) },
             config: {
-                mass: Math.min(Math.max(meteors[i].mass / 30, 1), 5),
-                tension: 100,
-                friction: Math.min(Math.max(meteors[i].mass, 150), 1000),
                 clamp: true,
-                easing: t => t*t*t
+                duration: meteors[i].fallDuration,
+                easing: t => t*t
             },
             onRest: () => {
                 ctx.update(null, currentCtx => {
