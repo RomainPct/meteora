@@ -37,7 +37,7 @@ export const CameraControls = () => {
                 enableZoom={true}
                 zoomSpeed={0.2}
                 minDistance={3}
-                maxDistance={6}
+                maxDistance={10}
                 enablePan={false}
                 />
 }

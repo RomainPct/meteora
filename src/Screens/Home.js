@@ -28,11 +28,19 @@ export const Home = () => {
                     let nextMonth = relativeOffset < 0 ? currentCtx.currentMonth + 1 : currentCtx.currentMonth - 1
                     let yearIndex = currentCtx.currentYearIndex
                     if (nextMonth > 12) {
-                        yearIndex++
-                        nextMonth = 1
+                        if (yearIndex + 1 < currentCtx.availableYears.length) {
+                            yearIndex++
+                            nextMonth = 1
+                        } else {
+                            nextMonth = 13
+                        }
                     } else if (nextMonth < 1) {
-                        yearIndex--
-                        nextMonth = 12
+                        if (yearIndex - 1 >= 0) {
+                            yearIndex--
+                            nextMonth = 12
+                        } else {
+                            nextMonth = 0
+                        }
                     }
                     return {
                         currentYearIndex: yearIndex,
@@ -72,8 +80,8 @@ export const Home = () => {
     }, [ctx.currentYear])
 
     const getMonthName = (i) => {
-        const months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]
-        return months[i-1]
+        const months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Searching for new meteors..." ]
+        return i === 0 ? 'Past is mysterious...' : months[i-1]
     }
 
     return (
