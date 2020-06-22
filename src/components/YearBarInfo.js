@@ -9,7 +9,7 @@ export const YearBarInfo = (props) => {
 
     const [medianWeight, setMedianWeight] = useState(null)
     const [biggestMeteor, setBiggestMeteor] = useState({})
-    const [smallestMeteor, setSmallestMeteor] = useState({})
+    const [averageMass, setAverageMass] = useState(null)
 
     useEffect(() => {
         API.fetchMedianWeight(props.year, (response) => {
@@ -18,8 +18,8 @@ export const YearBarInfo = (props) => {
         API.fetchBiggestMeteor(props.year, (response) => {
             setBiggestMeteor(response)
         })
-        API.fetchSmallestMeteor(props.year, (response) => {
-            setSmallestMeteor(response)
+        API.fetchAverageMass(props.year, (response) => {
+            setAverageMass(response)
         })
     }, [props.year])
 
@@ -32,10 +32,18 @@ export const YearBarInfo = (props) => {
             <div className="Line"></div>
             <div className="yearBarInfoItems">
                 <div className="yearNameMenu">Year {props.year}</div>
-                <div className="yearBarMeteors">{props.meteorsCount} meteors</div>
-                <div className="yearBarAvMass">{medianWeight} med. mass</div>
-                <div className="yearBarMassMin">{smallestMeteor.mass} mass min</div>
-                <div className="yearBarMassMax">{biggestMeteor.mass} highest mass</div>
+                <div className="yearBarMeteors">{props.meteorsCount} meteors
+                    <div className="yearBarMeteorsBackground" style={{transform: `scaleX(${props.meteorsCount / 3323})`}}></div>
+                </div>
+                <div className="yearBarMedianMass">{medianWeight} med. mass
+                    <div className="yearBarMedianMassBackground" style={{transform: `scaleX(${medianWeight / 459})`}}></div>
+                </div>
+                <div className="yearBarMassAverage">{averageMass} average mass
+                    <div className="yearBarMassAverageBackground" style={{transform: `scaleX(${averageMass / 9472})`}}></div>
+                </div>
+                <div className="yearBarMassMax">{biggestMeteor.mass} highest mass
+                    <div className="yearBarMassMaxBackground" style={{transform: `scaleX(${biggestMeteor.mass / 3000000})`}}></div>
+                </div>
                 {props.withLinkTo ?
                     <div onClick={openDetailedYear} className="yearLink">
                         Discover some stats about this year
