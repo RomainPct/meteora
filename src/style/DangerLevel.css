@@ -12,6 +12,7 @@
 }
 
 .circleDanger{
+    transition: 0.3s;
     width: min(200px);
     height: min(200px);
     border-radius: 50%;
