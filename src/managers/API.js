@@ -19,6 +19,15 @@ class API {
 
     /**
      * 
+     * @param {Number} year 
+     * @param {(response) => {}} handler Callback function called when response is returned
+     */
+    fetchAverageMass(year, handler = (result) => {}) {
+        this.fetchOurAPI(`getAverageMass.php?year=${encodeURIComponent(year)}`, handler)
+    }
+
+    /**
+     * 
      * @param {Number} id 
      * @param {(response) => {}} handler Callback function called when response is returned
      */
