@@ -2,24 +2,16 @@
     display: flex;
 }
 
-.dangerThisYear{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
 .dangerText{
     text-align: center;
 }
 
 .dangerTextBiggest{
     text-align: center;
-    margin-top: 50%;
+    margin-top: 20vh;
 }
 
 .circleDanger{
-    margin-top: 80px;
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -28,10 +20,12 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: -1;
 }
 
-.dangerTextContainer{
+.dangerContainer{
     position: relative;
+    height: 300px;
 }
 
 .circleText{
