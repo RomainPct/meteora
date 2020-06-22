@@ -28,8 +28,8 @@ export const DangerLevelGraph = (props) => {
                 </div>
                 <div className="chicxculub">
                     <h3 className="dangerText">Chicxculub <br></br>(dinausaurs’killer):</h3>
+                    <p className="massDino">4,6 × 10¹⁷ kg</p>
                     <div className="circleDino">
-
                     </div>
                 </div>
             </div>
