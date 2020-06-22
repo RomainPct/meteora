@@ -1,6 +1,6 @@
 class API {
 
-    static HOST = 'http://meteora-api.louplemaire.fr'
+    static HOST = 'https://meteora-api.louplemaire.fr'
 
     fetchOurAPI(endpoint, handler) {
         fetch(`${API.HOST}/${endpoint}`)
