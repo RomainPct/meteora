@@ -23,7 +23,12 @@ export function Scene3D() {
         const meteors = ctx.meteorsByYear[ctx.currentYear.year] ?? []
         const meteorsGroup = meteors.length / 12
         const month = ctx.currentMonth
-        return meteors.slice( (month - 1) * meteorsGroup, month * meteorsGroup)
+        const currentMeteors = meteors.slice( (month - 1) * meteorsGroup, month * meteorsGroup)
+        // ctx.update({
+        //     meteorsOnRest: 0
+        // })
+        console.log(`-> meteorsToDisplay`)
+        return currentMeteors
     }
 
     function computePos(meteor, startPoint = false) {
@@ -55,6 +60,18 @@ export function Scene3D() {
             },
             onRest: () => {
                 console.log(`rest`)
+                ctx.update(null, currentCtx => {
+                    console.log(`on rest : ${currentCtx.meteorsOnRest + 1} - ${meteors.length}`)
+                    if (currentCtx.meteorsOnRest + 1 === meteors.length) {
+                        return {
+                            meteorsOnRest: 0
+                        }
+                    } else {
+                        return {
+                            meteorsOnRest: currentCtx.meteorsOnRest + 1
+                        }
+                    }
+                })
             }
         })
     )
@@ -90,7 +107,7 @@ export function Scene3D() {
                 {meteorsAnim.map( (props, i) => (
                     <Meteor
                         {...props}
-                        onClick={_ => handleClick(meteors[i], i)}
+                        onClick={_ => handleClick(meteors[i].id, i)}
                         meteor={meteors[i]}
                         key={meteors[i].id}
                         isFocus={pathname.includes(`/detailedMeteor/${meteors[i].id}`)}
