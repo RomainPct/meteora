@@ -57,9 +57,9 @@ export const DetailedMeteor = () => {
                     </div>
                     <div className="detailedMeteorLowerInfo">
                         <div className="meteorInfoCard">
-                            <p>FALL LOCATION</p>
+                            <p>IDENTIFIED FROM</p>
                             <h3>{detailedMeteor.country == null ? "Unknown location" : detailedMeteor.country }<span role="img" aria-label="mexico">{detailedMeteor.flag == null ? "" : detailedMeteor.flag }</span></h3>
-                            <p className="infoDesc">{detailedMeteor.city == null ? "" : "near ",detailedMeteor.city }</p>
+                            <p className="infoDesc">{detailedMeteor.city == null ? "" : detailedMeteor.city }</p>
                         </div>
                         <div className="meteorInfoCard">
                             <p>DESTRUCTIVE POWER</p>
