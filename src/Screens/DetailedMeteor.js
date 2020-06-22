@@ -30,7 +30,7 @@ export const DetailedMeteor = () => {
              "This one was too small to be seen",
              "There is no way you saw this one burning",
          ]
-         return (mass > 100) ? bigMeteorDesc[Math.floor(Math.random()*bigMeteorDesc.length)] : smallMeteorDesc[Math.floor(Math.random()*smallMeteorDesc.length)]
+         return (mass > 1000) ? bigMeteorDesc[Math.floor(Math.random()*bigMeteorDesc.length)] : smallMeteorDesc[Math.floor(Math.random()*smallMeteorDesc.length)]
     }
 
     
