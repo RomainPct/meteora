@@ -13,9 +13,9 @@ export const DetailedYear = () => {
     const ctx = useContext(GlobalContext)
     const { yearIndex } = useParams()
     const year = ctx.availableYears[yearIndex] ?? {}
-    const yearMeteors = ctx.meteorsByYear[year.year] ?? {}
+    const yearMeteors = ctx.meteorsByYear[year.year] ?? []
 
-    const [selectedIndex, setSelectedIndex] = useState(1)
+    const [selectedIndex, setSelectedIndex] = useState(0)
 
     useEffect(() => {
         ctx.loadYear(year.year)

@@ -9,58 +9,54 @@
     position: relative;
 }
 
-.bigContainer{
+.comparisonContainer {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-
-.medContainer{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.comparisonContainer.bigContainer {
+    z-index: 2;
 }
-
-.smallContainer{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.circleBig{
+.comparisonContainer.bigContainer .textComparison {
     background-color: #A6D9DC;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    min-width: 50px;
-    min-height: 50px;
 }
-
-.circleMed{
+.comparisonContainer.medContainer {
+    z-index: 3;
+}
+.comparisonContainer.medContainer .textComparison {
     background-color: #47799C;
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    min-width: 50px;
-    min-height: 50px;
+}
+.comparisonContainer.smallContainer {
+    z-index: 4;
+}
+.comparisonContainer.smallContainer .textComparison {
+    background-color: #243859;
 }
 
-.circleSmall{
-    background-color: #243859;
-    width: 50px;
-    height: 50px;
+.comparisonCircle {
     border-radius: 50%;
-    min-width: 50px;
-    min-height: 50px;
+    margin: 0 auto;
+    transition: transform .3s;
+}
+.comparisonCircle.circleBig {
+    width: 50vh;
+    height: 50vh;
+    background-color: #A6D9DC;
+}
+.comparisonCircle.circleMed {
+    width: 30vh;
+    height: 30vh;
+    background-color: #47799C;
+}
+.comparisonCircle.circleSmall {
+    width: 10vh;
+    height: 10vh;
+    background-color: #243859;
 }
 
 .textComparison{
     text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    white-space: nowrap;
+    padding: 8px 16px;
 }

@@ -1,4 +1,5 @@
 .yearBarInfoContainer{
+    min-width: 200px;
     display: flex;
     padding: 5px;
 }
@@ -35,6 +36,9 @@
     transform-origin: left;
     background-color: #243859;
     z-index: -1;
+    transition: transform .3s ease-in-out;
+    transform: scaleX(0);
+    will-change: transform;
 }
 
 .yearBarMedianMass{
@@ -54,6 +58,9 @@
     transform-origin: left;
     background-color: #47799C;
     z-index: -1;
+    transition: transform .3s ease-in-out;
+    transform: scaleX(0);
+    will-change: transform;
 }
 
 .yearBarMassAverage{
@@ -73,6 +80,9 @@
     transform-origin: left;
     background-color: #243859;
     z-index: -1;
+    transition: transform .3s ease-in-out;
+    transform: scaleX(0);
+    will-change: transform;
 }
 
 .yearBarMassMax{
@@ -92,4 +102,18 @@
     transform-origin: left;
     background-color: #47799C;
     z-index: -1;
+    transition: transform .3s ease-in-out;
+    transform: scaleX(0);
+    will-change: transform;
+}
+
+.yearLink {
+    margin-top: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.yearLink::before {
+    content: ">";
+    margin: 0 8px;
 }

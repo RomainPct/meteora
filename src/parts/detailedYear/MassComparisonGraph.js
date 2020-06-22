@@ -4,9 +4,9 @@ import '../../style/ComparisonGraph.css'
 
 export const MassComparisonGraph = (props) => {
 
-    const [medianWeight, setMedianWeight] = useState(null)
+    const [medianWeight, setMedianWeight] = useState(0)
     const [biggestMeteor, setBiggestMeteor] = useState({})
-    const [smallestMeteor, setSmallestMeteor] = useState({})
+    const [averageWeight, setAverageWeight] = useState(0)
 
     useEffect(() => {
         API.fetchMedianWeight(props.year, (response) => {
@@ -15,8 +15,8 @@ export const MassComparisonGraph = (props) => {
         API.fetchBiggestMeteor(props.year, (response) => {
             setBiggestMeteor(response)
         })
-        API.fetchSmallestMeteor(props.year, (response) => {
-            setSmallestMeteor(response)
+        API.fetchAverageMass(props.year, (response) => {
+            setAverageWeight(response)
         })
     }, [props.year])
 
@@ -25,17 +25,23 @@ export const MassComparisonGraph = (props) => {
             <h2 className="titleDetailedYear">Year {props.year}’s average mass</h2>
             <div className="containerCenter">
                 <div className="circleContainer">
-                    <div className="bigContainer">
-                        <div className="textComparison">{biggestMeteor.mass}g max</div>
-                        <div className="circleBig"></div>
+                    <div className="comparisonContainer bigContainer">
+                        <div className="textComparison">Biggest meteor of the year : {biggestMeteor.mass}g</div>
+                        <div className="comparisonCircle circleBig"></div>
                     </div>
-                    <div className="medContainer">
-                        <div className="textComparison">{medianWeight}g med. mass</div>
-                        <div className="circleMed"></div>
+                    <div className="comparisonContainer medContainer">
+                        <div className="textComparison">Average mass : {averageWeight}g</div>
+                        <div
+                            className="comparisonCircle circleMed"
+                            style={{ transform: `scale(${Math.max( 0.2, 5/3 * averageWeight / biggestMeteor.mass)})`}}
+                            ></div>
                     </div>
-                    <div className="smallContainer">
-                        <div className="textComparison">{smallestMeteor.mass}g min</div>
-                        <div className="circleSmall"></div>
+                    <div className="comparisonContainer smallContainer">
+                        <div className="textComparison">Median mass : {medianWeight}g</div>
+                        <div
+                            className="comparisonCircle circleSmall"
+                            style={{ transform: `scale(${Math.max( 0.2, 5 * medianWeight / biggestMeteor.mass)})`}}
+                            ></div>
                     </div>
                 </div>
             </div>

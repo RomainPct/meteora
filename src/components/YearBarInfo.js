@@ -32,21 +32,25 @@ export const YearBarInfo = (props) => {
             <div className="Line"></div>
             <div className="yearBarInfoItems">
                 <div className="yearNameMenu">Year {props.year}</div>
-                <div className="yearBarMeteors">{props.meteorsCount} meteors
-                    <div className="yearBarMeteorsBackground" style={{transform: `scaleX(${props.meteorsCount / 3323})`}}></div>
+                <div className="yearBarMeteors">
+                    {props.meteorsCount} meteors detected this year
+                    <div className="yearBarMeteorsBackground" style={{transform: `scaleX(${Math.min(props.meteorsCount / 3323, 1)})`}}></div>
                 </div>
-                <div className="yearBarMedianMass">{medianWeight} med. mass
-                    <div className="yearBarMedianMassBackground" style={{transform: `scaleX(${medianWeight / 459})`}}></div>
+                <div className="yearBarMedianMass">
+                    Median : {medianWeight ?? '...'}g
+                    <div className="yearBarMedianMassBackground" style={{transform: `scaleX(${Math.min(medianWeight / 459, 1)})`}}></div>
                 </div>
-                <div className="yearBarMassAverage">{averageMass} average mass
-                    <div className="yearBarMassAverageBackground" style={{transform: `scaleX(${averageMass / 9472})`}}></div>
+                <div className="yearBarMassAverage">
+                    Average : {averageMass ?? '...'}g
+                    <div className="yearBarMassAverageBackground" style={{transform: `scaleX(${Math.min(averageMass / 9472, 1)})`}}></div>
                 </div>
-                <div className="yearBarMassMax">{biggestMeteor.mass} highest mass
+                <div className="yearBarMassMax">
+                    Biggest of the year : {biggestMeteor.mass ?? '...'}g
                     <div className="yearBarMassMaxBackground" style={{transform: `scaleX(${biggestMeteor.mass / 3000000})`}}></div>
                 </div>
                 {props.withLinkTo ?
                     <div onClick={openDetailedYear} className="yearLink">
-                        Discover some stats about this year
+                        Discover {props.year}
                     </div>
                     :null
                 }
