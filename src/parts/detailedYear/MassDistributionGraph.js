@@ -1,28 +1,26 @@
 import '../../style/MassDistributionGraph.css'
 import React from 'react'
 import BubbleChart from '@weknow/react-bubble-chart-d3';
-import { LogLuvEncoding } from 'three';
 
 export const MassDistributionGraph = (props) => {
 
     function sortMeteorsByMass() {
         const categories = [
-            { label: '1g-50g', value: 0 },
-            { label: '50g-100g', value: 0 },
-            { label: '100g-150g', value: 0 },
-            { label: '150g-200g', value: 0 },
-            { label: '200g-250g', value: 0 },
-            { label: '250g-500g', value: 0 },
-            { label: '500g-750g', value: 0 },
-            { label: '750g-1kg', value: 0 },
-            { label: '1kg-1.5kg', value: 0 },
-            { label: '1.5kg-2kg', value: 0 },
-            { label: '2kg-2.5kg', value: 0 },
-            { label: '2.5kg-3kg', value: 0 },
-            { label: '3kg-3.5kg', value: 0 },
-            { label: '3.5kg-4kg', value: 0 },
-            { label: '4kg+', value: 0 }]
-
+            { label: '1g-50g', value: 0, color:"#243859" },
+            { label: '50g-100g', value: 0, color:"#47799C" },
+            { label: '100g-150g', value: 0 , color:"#47799C"},
+            { label: '150g-200g', value: 0 , color:"#47799C"},
+            { label: '200g-250g', value: 0 , color:"#47799C"},
+            { label: '250g-500g', value: 0 , color:"#47799C"},
+            { label: '500g-750g', value: 0 , color:"#47799C"},
+            { label: '750g-1kg', value: 0 , color:"#47799C"},
+            { label: '1kg-1.5kg', value: 0 , color:"#47799C"},
+            { label: '1.5kg-2kg', value: 0 , color:"#47799C"},
+            { label: '2kg-2.5kg', value: 0 , color:"#47799C"},
+            { label: '2.5kg-3kg', value: 0 , color:"#47799C"},
+            { label: '3kg-3.5kg', value: 0 , color:"#47799C"},
+            { label: '3.5kg-4kg', value: 0 , color:"#47799C"},
+            { label: '4kg+', value: 0 , color:"#47799C"}]
 
         props.meteors.forEach(meteor => {
 
@@ -76,51 +74,45 @@ export const MassDistributionGraph = (props) => {
         });
         
         return categories
-        
-
     }
-
-    
-    
-    
 
 
     return (
         <section>
             <h2 className="titleDetailedYear">Year {props.year}'s meteors </h2>
             <BubbleChart
-  graph= {{
-    zoom: 0.7,
-    offsetX: 0.15,
-    offsetY: 0.1,
-  }}
-  width={800}
-  height={600}
-  padding={0} // optional value, number that set the padding between bubbles
-  showLegend={true} // optional value, pass false to disable the legend.
-  legendPercentage={10} // number that represent the % of with that legend going to use.
-  legendFont={{
-        family: 'Quicksand',
-        size: 15,
-        color: '#fff',
-        weight: 'bold',
-      }}
-  valueFont={{
-        family: 'Quicksand',
-        size: 12,
-        color: '#fff',
-        weight: 'bold',
-      }}
-  labelFont={{
-        family: 'Quicksand',
-        size: 16,
-        color: '#fff',
-        weight: 'bold',
-      }}
-  //Custom bubble/legend click functions such as searching using the label, redirecting to other page
+                graph= {{
+                    zoom: 0.6,
+                    offsetX: 0.15,
+                    offsetY: 0.1,
+                }}
+                width={800}
+                height={600}
+                padding={0} // optional value, number that set the padding between bubbles
+                showLegend={false} // optional value, pass false to disable the legend.
+                legendPercentage={10} // number that represent the % of with that legend going to use.
+                legendFont={{
+                        family: 'Quicksand',
+                        size: 15,
+                        color: '#fff',
+                        weight: 'bold',
+                    }}
+                valueFont={{
+                        family: 'Quicksand',
+                        size: 12,
+                        color: '#fff',
+                        weight: 'bold',
+                    }}
+                labelFont={{
+                        family: 'Quicksand',
+                        size: 12,
+                        color: '#fff',
+                        weight: 'bold',
+                    }}
+                //Custom bubble/legend click functions such as searching using the label, redirecting to other page
 
-  data={sortMeteorsByMass()}
-/>
+                data={sortMeteorsByMass()}
+            />
         </section>
     )
     
