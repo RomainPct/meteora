@@ -26,7 +26,6 @@ export function Meteor(props) {
             >
             <mesh
                 ref={mesh}
-                scale={props.isFocus ? [5, 5, 5] : [1, 1, 1]}
                 material={new MeshPhongMaterial({
                     color: 0xaaaaaa
                 })}
@@ -35,7 +34,6 @@ export function Meteor(props) {
             </mesh>
             {hovered ?
                 <mesh
-                    scale={props.isFocus ? [5, 5, 5] : [1, 1, 1]}
                     material={new MeshPhongMaterial({
                         color: 0xffffff,
                         opacity: 0.6,

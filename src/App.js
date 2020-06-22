@@ -38,6 +38,34 @@ function App() {
         })
     }
 
+    const moveInTimeline = (inTheFutur) => {
+        ctx.update(null, (currentCtx) => {
+            let nextMonth = inTheFutur ? currentCtx.currentMonth + 1 : currentCtx.currentMonth - 1
+            let yearIndex = currentCtx.currentYearIndex
+            if (nextMonth > 12) {
+                if (yearIndex + 1 < currentCtx.availableYears.length) {
+                    yearIndex++
+                    nextMonth = 1
+                } else {
+                    nextMonth = 13
+                }
+            } else if (nextMonth < 1) {
+                if (yearIndex - 1 >= 0) {
+                    yearIndex--
+                    nextMonth = 12
+                } else {
+                    nextMonth = 0
+                }
+            }
+            return {
+                currentYearIndex: yearIndex,
+                currentMonth: nextMonth,
+                currentYear: currentCtx.availableYears[yearIndex],
+                meteorsOnRest: 0
+            }
+        })
+    }
+
     const updateContext = (newCtx, handler = null) => {
         setCtx( currentCtx => {
             newCtx = handler === null ? newCtx : handler(currentCtx)
@@ -51,7 +79,8 @@ function App() {
     const [ctx, setCtx] = useState({
         ...defaultGlobalContext,
         update: updateContext,
-        loadYear: loadYear
+        loadYear: loadYear,
+        moveInTimeline: moveInTimeline
     })
 
     useEffect(() => {

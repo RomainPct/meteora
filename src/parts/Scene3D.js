@@ -59,13 +59,10 @@ export function Scene3D() {
                 easing: t => t*t*t
             },
             onRest: () => {
-                console.log(`rest`)
                 ctx.update(null, currentCtx => {
-                    console.log(`on rest : ${currentCtx.meteorsOnRest + 1} - ${meteors.length}`)
                     if (currentCtx.meteorsOnRest + 1 === meteors.length) {
-                        return {
-                            meteorsOnRest: 0
-                        }
+                        ctx.moveInTimeline(true)
+                        return {}
                     } else {
                         return {
                             meteorsOnRest: currentCtx.meteorsOnRest + 1

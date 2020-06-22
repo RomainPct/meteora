@@ -11,7 +11,8 @@ export const defaultGlobalContext = {
     cameraPosition: { x: 0, y: 0, z: 5 },
     meteorsOnRest: 0,
     update: (newCtx = null, handler = null) => {},
-    loadYear: (_year = null) => {}
+    loadYear: (_year = null) => {},
+    moveInTimeline: (inTheFutur = true) => {}
 }
 
 export const GlobalContext = React.createContext(defaultGlobalContext)
