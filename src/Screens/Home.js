@@ -14,6 +14,16 @@ export const Home = () => {
     let timelineBarWidth = null
     let relativeOffset = null
     let offset = null
+
+    function getSpaceFacts() {
+        const spaceFacts = [
+            "Millions of objects cross Earth's atmosphere each day",
+            "The appearance of a number of meteors occurring in the same part of the sky over a period of time is called “meteor shower”",
+            "Many meteor showers are associated with comets, which leave behind debris as they orbit through the solar system.  Showers occur when Earth’s orbit crosses the path of a comet’s orbit"
+        ]
+        return spaceFacts[Math.floor(Math.random() * spaceFacts.length)]
+        
+    }
     const { events } = useScrollOnDrag(timelineRef, {
         onDragStart: () => {
             timelineBarWidth = timelineBarRef.current.offsetWidth
@@ -48,7 +58,7 @@ export const Home = () => {
         {
             from: { opacity: 1, transform: 'scale(1)' },
             leave: { opacity: 0, transform: 'scale(0.8)' },
-            config: { duration: 300 }
+            config: { duration: 600 }
         }
     )
 
@@ -67,7 +77,8 @@ export const Home = () => {
             {descriptionTransition.map(({item, key, props}) => {
                 return item ? null :
                     <animated.div key={key} className="homeWelcomeView" style={props}>
-                        <h3 className="homeCatchphrase">All known meteors since the IXth century</h3>
+                        <h2>Did you know ?</h2>
+                        <p className="homeCatchphrase">{getSpaceFacts()}</p>
                     </animated.div>
             })}
             {ctx.introductionIsDone === true ?
