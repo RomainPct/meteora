@@ -16,7 +16,7 @@ function App() {
             API.fetchYear(_year, (json) => {
                 const meteorsThisYear = {}
                 meteorsThisYear[_year] = json.map((meteor) => {
-                    const sizeRatio = Math.max(Math.min(meteor.mass / 40000, 0.02), 0.002)
+                    const sizeRatio = Math.max(Math.min(meteor.mass / 40000, 0.01), 0.002)
                     meteor.scale = [
                         sizeRatio * Math.max(Math.random() * 10, 5),
                         sizeRatio * Math.max(Math.random() * 10, 5),

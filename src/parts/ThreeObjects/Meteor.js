@@ -60,26 +60,27 @@ export function Meteor(props) {
     
     return (
         <animated.group
-            {...groupTransition}
             {...props}
             onPointerOver={_ => setHover(true)}
             onPointerOut={_ => setHover(false)}
             >
-            <Suspense fallback={<MeteorFallback size={capsuleSize()} />}>
-                <MeteorModel meteor={props.meteor} scale={props.meteor.scale} />
-            </Suspense>
-            {hovered ?
-                <mesh
-                    material={new MeshPhongMaterial({
-                        color: 0xA6D9DC,
-                        opacity: 0.4,
-                        transparent: true
-                    })}
-                    >
-                    <sphereBufferGeometry attach="geometry" args={capsuleSize()} />
-                </mesh>
-                :null
-            }
+            <animated.group {...groupTransition}>
+                <Suspense fallback={<MeteorFallback size={capsuleSize()} />}>
+                    <MeteorModel meteor={props.meteor} scale={props.meteor.scale} />
+                </Suspense>
+                {hovered ?
+                    <mesh
+                        material={new MeshPhongMaterial({
+                            color: 0xA6D9DC,
+                            opacity: 0.4,
+                            transparent: true
+                        })}
+                        >
+                        <sphereBufferGeometry attach="geometry" args={capsuleSize()} />
+                    </mesh>
+                    :null
+                }
+            </animated.group>
         </animated.group>
         )
 }
