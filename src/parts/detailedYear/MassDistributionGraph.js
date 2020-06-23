@@ -83,7 +83,7 @@ export const MassDistributionGraph = (props) => {
             <BubbleChart
                 graph= {{
                     zoom: 0.6,
-                    offsetX: 0.15,
+                    offsetX: 0,
                     offsetY: 0.1,
                 }}
                 width={800}
