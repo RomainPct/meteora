@@ -4,8 +4,8 @@ import { useFrame, useLoader } from 'react-three-fiber'
 import { TextureLoader, MeshPhongMaterial, Vector2 } from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
-import meteorTexture from '../../assets/meteor/texture.jpg'
-import meteorNormalMap from '../../assets/meteor/normal.png'
+import meteorTexture from '../../assets/meteor/1/texture.jpg'
+import meteorNormalMap from '../../assets/meteor/1/normal.png'
 
 function MeteorFallback(props) {
     return (
