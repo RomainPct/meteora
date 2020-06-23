@@ -78,3 +78,7 @@
     background-image: url("../assets/images/play_arrow-white-18dp.svg");
     background-repeat: no-repeat;
 }
+
+.noSelect{
+    user-select: none;
+}
