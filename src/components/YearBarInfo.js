@@ -31,11 +31,26 @@ export const YearBarInfo = (props) => {
         history.push(`/detailedYear/${props.withLinkTo}`)
     }
 
+    const navigateInYears = (inTheFutur) => {
+        ctx.update(
+            null,
+            (currentCtx) => ({
+                currentYearIndex: currentCtx.currentYearIndex + (inTheFutur ? 1 : -1),
+                currentMonth: 1,
+                currentYear: currentCtx.availableYears[currentCtx.currentYearIndex + (inTheFutur ? 1 : -1)]
+            })
+        )
+    }
+
     return (
         <div className="yearBarInfoContainer">
             <div className="Line"></div>
             <div className="yearBarInfoItems">
-                <div className="yearNameMenu"><img src={backSpace} onClick={ctx.update(ctx.currentYear.year - 1)}/>Year {props.year}<img className="reversed" src={backSpace} onClick={ctx.update(ctx.currentYear.year + 1)}/></div>
+                <div className="yearNameMenu">
+                    <img onClick={_ => navigateInYears(false)} src={backSpace} />
+                    Year {props.year}
+                    <img onClick={_ => navigateInYears(true)} className="reversed" src={backSpace} />
+                </div>
                 <div className="yearBarMeteors">
                     {props.meteorsCount} meteors detected this year
                     <div className="yearBarMeteorsBackground" style={{transform: `scaleX(${Math.min(props.meteorsCount / 3323, 1)})`}}></div>

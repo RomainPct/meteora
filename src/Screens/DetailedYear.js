@@ -1,6 +1,6 @@
 import '../style/DetailedYear.css'
 import React, { useState, useContext, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import { ButtonBar } from '../components/ButtonBar'
 import { YearBarInfo } from '../components/YearBarInfo'
 import { MassDistributionGraph } from '../parts/detailedYear/MassDistributionGraph'
@@ -11,6 +11,7 @@ import { GlobalContext } from '../contexts/GlobalContext'
 export const DetailedYear = () => {
 
     const ctx = useContext(GlobalContext)
+    const history = useHistory()
     const { yearIndex } = useParams()
     const year = ctx.availableYears[yearIndex] ?? {}
     const yearMeteors = ctx.meteorsByYear[year.year] ?? []
@@ -20,6 +21,12 @@ export const DetailedYear = () => {
     useEffect(() => {
         ctx.loadYear(year.year)
     }, [year])
+
+    useEffect(() => {
+        if (ctx.currentYearIndex !== yearIndex) {
+            history.push(`/detailedYear/${ctx.currentYearIndex}`)
+        }
+    }, [ctx.currentYearIndex])
 
     function switchMainContent() {
         switch (selectedIndex) {
@@ -35,7 +42,7 @@ export const DetailedYear = () => {
             <h1>This is DetailedYear {year.year}</h1>
             <div className="detailedYearContainer">
                 <div className="yearInfoContainer">
-                    <YearBarInfo className="test" year={year.year} meteorsCount={year.meteorsCount} />
+                    <YearBarInfo year={year.year} meteorsCount={year.meteorsCount} />
                 </div>
                 <div className="graphContainer">
                     {switchMainContent()}
