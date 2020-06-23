@@ -9,6 +9,7 @@ export const Home = () => {
 
     const ctx = useContext(GlobalContext)
 
+    const fact = useRef(null)
     const timelineRef = useRef()
     const timelineBarRef = useRef()
     let timelineBarWidth = null
@@ -16,13 +17,15 @@ export const Home = () => {
     let offset = null
 
     function getSpaceFacts() {
-        const spaceFacts = [
-            "Millions of objects cross Earth's atmosphere each day",
-            "The appearance of a number of meteors occurring in the same part of the sky over a period of time is called “meteor shower”",
-            "Many meteor showers are associated with comets, which leave behind debris as they orbit through the solar system.  Showers occur when Earth’s orbit crosses the path of a comet’s orbit"
-        ]
-        return spaceFacts[Math.floor(Math.random() * spaceFacts.length)]
-        
+        if (fact.current === null) {
+            const spaceFacts = [
+                "Millions of objects cross Earth's atmosphere each day",
+                "The appearance of a number of meteors occurring in the same part of the sky over a period of time is called “meteor shower”",
+                "Many meteor showers are associated with comets, which leave behind debris as they orbit through the solar system.  Showers occur when Earth’s orbit crosses the path of a comet’s orbit"
+            ]
+            fact.current = spaceFacts[Math.floor(Math.random() * spaceFacts.length)]
+        }
+        return fact.current
     }
     const { events } = useScrollOnDrag(timelineRef, {
         onDragStart: () => {
@@ -58,7 +61,7 @@ export const Home = () => {
         {
             from: { opacity: 1, transform: 'scale(1)' },
             leave: { opacity: 0, transform: 'scale(0.8)' },
-            config: { duration: 600 }
+            config: { duration: 450 }
         }
     )
 

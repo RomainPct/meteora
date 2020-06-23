@@ -87,10 +87,8 @@ function App() {
             })
         })
         setTimeout(() => {
-            updateContext({
-                introductionIsDone: false
-            })
-        }, 3000)
+            updateContext({ introductionIsDone: false })
+        }, 6000)
     }, [])
 
     return ( 
