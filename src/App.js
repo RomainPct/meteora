@@ -57,8 +57,7 @@ function App() {
             return {
                 currentYearIndex: yearIndex,
                 currentMonth: nextMonth,
-                currentYear: currentCtx.availableYears[yearIndex],
-                meteorsOnRest: 0
+                currentYear: currentCtx.availableYears[yearIndex]
             }
         })
     }
