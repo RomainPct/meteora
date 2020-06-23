@@ -1,5 +1,5 @@
 import React, { useState, useRef, Suspense, useMemo } from 'react'
-import { animated } from 'react-spring/three'
+import { useSpring, animated } from 'react-spring/three'
 import { useFrame, useLoader } from 'react-three-fiber'
 import { TextureLoader, MeshPhongMaterial, Vector2 } from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
@@ -23,13 +23,17 @@ function MeteorModel(props) {
     const normalMap = useMemo(() => new TextureLoader().load(`/meteor/${props.meteor.texture}/normal.png`), [])
     const { nodes } = useLoader(GLTFLoader, '/3D_objects/meteor.glb');
 
-    useFrame(() => (mesh.current.rotation.z = mesh.current.rotation.z += 0.01))
+    useFrame(() => {
+        mesh.current.rotation.x += props.meteor.rotationSpeed.x
+        mesh.current.rotation.y += props.meteor.rotationSpeed.y
+        mesh.current.rotation.z += props.meteor.rotationSpeed.z
+    })
 
     return (
         <mesh
             ref={mesh}
             geometry={nodes.meteor.geometry}
-            scale={[0.1, 0.1, 0.1]}
+            scale={props.scale}
             material={new MeshPhongMaterial({
                 map: texture,
                 normalMap: normalMap,
@@ -45,19 +49,24 @@ export function Meteor(props) {
     // Set up state for the hovered and active state
     const [hovered, setHover] = useState(false)
 
-    function size(isCapsule = false) {
-        const size = Math.max(Math.min(props.meteor.mass / 4000, 0.2), 0.01) + (isCapsule ? 0.02 : 0)
+    const groupTransition = useSpring({
+        scale: props.isOnHome || props.isFocus ? [1, 1, 1] : [0, 0, 0]
+    })
+
+    function capsuleSize() {
+        const size = Math.max(Math.min(props.meteor.mass / 4000, 0.2), 0.01)
         return [size, 24, 24]
     }
     
     return (
         <animated.group
+            {...groupTransition}
             {...props}
             onPointerOver={_ => setHover(true)}
             onPointerOut={_ => setHover(false)}
             >
-            <Suspense fallback={<MeteorFallback size={size()} />}>
-                <MeteorModel meteor={props.meteor} />
+            <Suspense fallback={<MeteorFallback size={capsuleSize()} />}>
+                <MeteorModel meteor={props.meteor} scale={props.meteor.scale} />
             </Suspense>
             {hovered ?
                 <mesh
@@ -67,7 +76,7 @@ export function Meteor(props) {
                         transparent: true
                     })}
                     >
-                    <sphereBufferGeometry attach="geometry" args={size(true)} />
+                    <sphereBufferGeometry attach="geometry" args={capsuleSize()} />
                 </mesh>
                 :null
             }

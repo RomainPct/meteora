@@ -122,6 +122,7 @@ export function Scene3D() {
                         onClick={_ => handleClick(meteors[i].id, i)}
                         meteor={meteors[i]}
                         key={meteors[i].id}
+                        isOnHome={pathname === '/'}
                         isFocus={pathname.includes(`/detailedMeteor/${meteors[i].id}`)}
                         />
                 ))}
