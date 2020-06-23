@@ -59,7 +59,6 @@ export function Scene3D() {
 
     const handleClick = (id, index) => {
         const pos = meteorsAnim[index].position.payload
-        console.log(pos)
         ctx.update({
             autoNavigationIsPlaying: false,
             cameraPosition: {

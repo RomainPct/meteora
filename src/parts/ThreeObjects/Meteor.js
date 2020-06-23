@@ -1,5 +1,5 @@
 import React, { useState, useRef, Suspense, useMemo } from 'react'
-import { useSpring, animated } from 'react-spring/three'
+import { useSpring, animated, useTransition } from 'react-spring/three'
 import { useFrame, useLoader } from 'react-three-fiber'
 import { TextureLoader, MeshPhongMaterial, Vector2 } from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
@@ -53,6 +53,17 @@ export function Meteor(props) {
         scale: props.isOnHome || props.isFocus ? [1, 1, 1] : [0, 0, 0]
     })
 
+    const hoverTransition = useTransition(
+        hovered,
+        null,
+        {
+            from: { scale: [0, 0, 0] },
+            enter: { scale: [1, 1, 1] },
+            leave: { scale: [0, 0, 0] },
+            config: { duration: 300 }
+        }
+    )
+
     function capsuleSize() {
         const scale = Math.max(...props.meteor.scale) * 1.9
         return [scale, 24, 24]
@@ -68,18 +79,21 @@ export function Meteor(props) {
                 <Suspense fallback={<MeteorFallback size={capsuleSize()} />}>
                     <MeteorModel meteor={props.meteor} scale={props.meteor.scale} />
                 </Suspense>
-                {hovered ?
-                    <mesh
-                        material={new MeshPhongMaterial({
-                            color: 0xA6D9DC,
-                            opacity: 0.4,
-                            transparent: true
-                        })}
-                        >
-                        <sphereBufferGeometry attach="geometry" args={capsuleSize()} />
-                    </mesh>
-                    :null
-                }
+                {hoverTransition.map(({ item, key, props }) => 
+                    item ?
+                    <animated.group {...props} key={key}>
+                        <mesh
+                            material={new MeshPhongMaterial({
+                                color: 0xA6D9DC,
+                                opacity: 0.4,
+                                transparent: true
+                            })}
+                            >
+                            <sphereBufferGeometry attach="geometry" args={capsuleSize()} />
+                        </mesh>
+                    </animated.group>
+                    : null
+                )}
             </animated.group>
         </animated.group>
         )
