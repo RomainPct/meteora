@@ -45,9 +45,9 @@ export const DetailedMeteor = () => {
                 </div>
                     <div className="detailedMeteorUpperInfo">
                         <div className="meteorInfoCard">
-                            <p>CLASS</p>
-                            <h3>{detailedMeteor.recclass}</h3>
-                            <p className="infoDesc">{detailedMeteor.classification_description}</p>
+                            <p>COMPONENTS</p>
+                            <h3>{detailedMeteor.classification_description}</h3>
+                            <p className="infoDesc">Class {detailedMeteor.recclass}</p>
                         </div>
                         <div className="meteorInfoCard">
                             <p>MASS</p>
