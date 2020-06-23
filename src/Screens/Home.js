@@ -70,7 +70,7 @@ export const Home = () => {
     }, [ctx.currentYear])
 
     const getMonthName = (i) => {
-        const months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Searching for new meteors..." ]
+        const months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December", "Futur is mysterious..." ]
         return i === 0 ? 'Past is mysterious...' : months[i-1]
     }
 

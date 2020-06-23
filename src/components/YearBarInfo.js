@@ -34,11 +34,22 @@ export const YearBarInfo = (props) => {
     const navigateInYears = (inTheFutur) => {
         ctx.update(
             null,
-            (currentCtx) => ({
-                currentYearIndex: currentCtx.currentYearIndex + (inTheFutur ? 1 : -1),
-                currentMonth: 1,
-                currentYear: currentCtx.availableYears[currentCtx.currentYearIndex + (inTheFutur ? 1 : -1)]
-            })
+            (currentCtx) => {
+                let yearIndex = currentCtx.currentYearIndex + (inTheFutur ? 1 : -1)
+                let month = 1
+                if (yearIndex >= currentCtx.availableYears.length) {
+                    yearIndex = currentCtx.availableYears.length - 1
+                    month = 13
+                } else if (yearIndex < 0) {
+                    yearIndex = 0
+                    month = 0
+                }
+                return {
+                    currentYearIndex: yearIndex,
+                    currentMonth: month,
+                    currentYear: currentCtx.availableYears[yearIndex]
+                }
+            }
         )
     }
 
