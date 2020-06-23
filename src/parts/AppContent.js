@@ -5,14 +5,9 @@ import { Home } from '../Screens/Home'
 import { DetailedMeteor } from '../Screens/DetailedMeteor'
 import { DetailedYear } from '../Screens/DetailedYear'
 import { AboutUs } from '../Screens/AboutUs'
-import {
-    Switch,
-    Route,
-    useLocation,
-    Link
-  } from 'react-router-dom'
+import { Switch, Route, useLocation, Link } from 'react-router-dom'
 
-import {useTransition, animated} from 'react-spring'
+import {useTransition, animated, useSpring} from 'react-spring'
 
 export const AppContent = () => {
 
@@ -29,10 +24,18 @@ export const AppContent = () => {
         }
     )
 
+    const aboutUsSpring = useSpring({
+        opacity: location.pathname !== '/aboutUs' ? 1 : 0,
+        transform: location.pathname !== '/aboutUs' ? 'translateY(0%)' : 'translateY(-50%)',
+        config: { duration: 400 }
+    })
+
     return (
         <div>
             <Header/>
-            <Link to="/aboutUs">About Us</Link>
+            <animated.div className="aboutUsButton" style={aboutUsSpring}>
+                <Link to="/aboutUs">About Us</Link>
+            </animated.div>
             <Scene3D/>
             {pageTransition.map(({item, key, props}) => (
                 <animated.div key={key} style={props} className='mainContainer' >

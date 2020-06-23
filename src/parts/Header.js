@@ -39,7 +39,7 @@ export const Header = () => {
 
     return (
         <header onClick={goBackHome} >
-            <animated.img style={backButtonSpring} className="backButton" src={backSpace} alt="Meteora logo"/>
+            <animated.img style={backButtonSpring} className="backButton" src={backSpace} alt="Back button"/>
             <animated.div style={headerSpring}>
                 <img className="meteora-logo" src={meteoraLogo} alt="Meteora logo"/>
             </animated.div>
