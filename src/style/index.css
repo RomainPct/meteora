@@ -17,7 +17,7 @@ body,
 body {
     font-family: 'Quicksand', sans-serif;
     font-size: 24px;
-    font-weight: 500;
+    font-weight: 300;
     color: #F3F3F3;
     background-color: #0a0a0a;
 }
@@ -39,7 +39,7 @@ h1{
 h2{
     font-size: 45px;
     font-family: 'Quicksand', sans-serif;
-    font-weight: 600;
+    font-weight: 300;
 }
 
 h3{
@@ -50,7 +50,7 @@ h3{
 
 h4{
     font-family: 'Quicksand', sans-serif;
-    font-weight: 600;
+    font-weight: 300;
 }
 
 .infoDesc{

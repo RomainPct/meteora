@@ -18,6 +18,8 @@
 .yearNameMenu{
     padding-bottom: 15px;
     padding-left: 8px;
+    display: flex;
+    align-items: center;
 }
 
 .yearBarMeteors{
@@ -109,7 +111,7 @@
 
 .yearLink {
     margin-top: 16px;
-    font-weight: 600;
+    font-weight: 300;
     cursor: pointer;
     transition: opacity 0.4s ease-in-out;
 }
@@ -126,10 +128,12 @@
 .changeYearButton{
     cursor: pointer;
     transition: opacity 0.4s ease-in-out;
+    width: 1.5vw;
+    opacity: 0.7;
 }
 
 .changeYearButton:hover{
-    opacity: 0.7;
+    opacity: 1;
 }
 
 .reversed{
