@@ -74,6 +74,12 @@
     width: 40px;
     background-image: url("../assets/images/pause-white-18dp.svg");
     background-repeat: no-repeat;
+    cursor: pointer;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.homeMainNavigation .playPauseButton:hover{
+    opacity: 0.7;
 }
 
 .homeMainNavigation .playPauseButton.paused {
