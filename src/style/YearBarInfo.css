@@ -128,7 +128,8 @@
 .changeYearButton{
     cursor: pointer;
     transition: opacity 0.4s ease-in-out;
-    width: 1.5vw;
+    width: 24px;
+    padding: 8px;
     opacity: 1;
 }
 

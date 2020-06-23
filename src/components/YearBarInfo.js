@@ -80,7 +80,7 @@ export const YearBarInfo = (props) => {
                 </div>
                 {props.withLinkTo ?
                     <div onClick={openDetailedYear} className="yearLink">
-                        Discover {props.year}
+                        learn more about {props.year}'s meteors
                     </div>
                     :null
                 }
