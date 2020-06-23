@@ -1,5 +1,5 @@
 import '../style/Scene3D.css'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import { Canvas } from 'react-three-fiber'
 import { Earth } from './ThreeObjects/Earth'
 import { EarthAtmosphere } from './ThreeObjects/EarthAtmosphere'
@@ -21,13 +21,11 @@ export function Scene3D() {
     function meteorsToDisplay() {
         if (ctx.introductionIsDone !== true) { return [] }
         const meteors = ctx.meteorsByYear[ctx.currentYear.year] ?? []
-        const meteorsGroup = meteors.length / 12
         const month = ctx.currentMonth
-        const currentMeteors = meteors.slice( (month - 1) * meteorsGroup, month * meteorsGroup)
-        // ctx.update({
-        //     meteorsOnRest: 0
-        // })
-        console.log(`-> meteorsToDisplay`)
+        const range = Math.floor(meteors.length / 12 ) + month - 6
+        const start = (month - 1) * range
+        const end = start + range
+        const currentMeteors = meteors.slice( start, end)
         return currentMeteors
     }
 
@@ -46,7 +44,7 @@ export function Scene3D() {
     }
 
     const meteors = meteorsToDisplay()
-    const [ meteorsAnim, setMeteorsAnim, stopMeteorsAnim ] = useSprings(
+    const [ meteorsAnim, setMeteorsAnim ] = useSprings(
         meteors.length,
         i => ({
             from: { position: computePos(meteors[i], true) },
@@ -55,18 +53,6 @@ export function Scene3D() {
                 clamp: true,
                 duration: meteors[i].fallDuration,
                 easing: t => t*t
-            },
-            onRest: () => {
-                ctx.update(null, currentCtx => {
-                    if (currentCtx.meteorsOnRest + 1 === meteors.length) {
-                        ctx.moveInTimeline(true)
-                        return {}
-                    } else {
-                        return {
-                            meteorsOnRest: currentCtx.meteorsOnRest + 1
-                        }
-                    }
-                })
             }
         })
     )
@@ -86,10 +72,41 @@ export function Scene3D() {
     }
 
     useEffect(() => {
-        setMeteorsAnim(i => ({
-            to: { position: ctx.autoNavigationIsPlaying && pathname === '/' ? computePos(meteors[i]) : meteorsAnim[i].position.payload }
-        }))
+        if (ctx.autoNavigationIsPlaying && pathname === '/') {
+            const progression = 1 - (timerRef.current /20)
+            setMeteorsAnim(i => {
+                const toPoint = computePos(meteors[i])
+                const fromPoint = (computePos(meteors[i], true) - toPoint) * progression + toPoint
+                return {
+                    from: { position: fromPoint },
+                    to: { position: toPoint },
+                    config: {
+                        duration: meteors[i].fallDuration * progression,
+                    }
+                }
+            })
+        } else {
+            setMeteorsAnim(i => ({
+                to: { position: meteorsAnim[i].position.payload }
+            }))
+        }
     }, [ctx.autoNavigationIsPlaying, pathname])
+
+
+    const timerRef = useRef(null)
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (ctx.autoNavigationIsPlaying && ctx.introductionIsDone) {
+                timerRef.current += 1
+                if (timerRef.current >= 20) {
+                    ctx.moveInTimeline(true)
+                    timerRef.current = 0
+                }
+            }
+        }, 1000)
+        return () => { clearInterval(interval) }
+      }, [ctx]);
 
     return (
         <Canvas id="main3DScene" style={{height:'100vh',width:'100vw'}}>
