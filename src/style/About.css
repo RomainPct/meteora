@@ -1,0 +1,55 @@
+.aboutPage{
+    background: rgb(1,1,1);
+    background: linear-gradient(180deg, rgba(1,1,1,1) 0%, rgba(52,57,100,1) 100%);
+}
+
+.containerAbout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 30px;
+}
+
+.containerPicture{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.pictureLine{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.teamPic{
+    text-align: center;
+    width: 50%;
+}
+
+.containerShare{
+    margin: 100px;
+}
+
+.shareBar{
+    display: flex;
+    text-decoration: none;
+    color: #f3f3f3;
+    margin: 15px;
+    cursor: pointer;
+}
+
+.logoShare{
+    padding-right: 30px;
+}
+
+.legalInfo{
+    margin: 100px;
+    text-align: center;
+}
+
+.textLegal{
+    margin-bottom: 15px;
+}
