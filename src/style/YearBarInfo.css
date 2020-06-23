@@ -111,11 +111,25 @@
     margin-top: 16px;
     font-weight: 600;
     cursor: pointer;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.yearLink:hover{
+    opacity: 0.7;
 }
 
 .yearLink::before {
     content: ">";
     margin: 0 8px;
+}
+
+.changeYearButton{
+    cursor: pointer;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.changeYearButton:hover{
+    opacity: 0.7;
 }
 
 .reversed{
