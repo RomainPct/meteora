@@ -62,7 +62,7 @@ export const Home = () => {
     }
 
     return (
-        <main>
+        <main className="noSelect">
             <h1>This is home</h1>
             {descriptionTransition.map(({item, key, props}) => {
                 return item ? null :
