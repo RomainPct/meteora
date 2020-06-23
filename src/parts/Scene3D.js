@@ -47,12 +47,23 @@ export function Scene3D() {
     const [ meteorsAnim, setMeteorsAnim ] = useSprings(
         meteors.length,
         i => ({
-            from: { position: computePos(meteors[i], true) },
-            to: { position: computePos(meteors[i]) },
-            config: {
-                clamp: true,
-                duration: meteors[i].fallDuration,
-                easing: t => t*t
+            from: { position: computePos(meteors[i], true), scale: [0, 0, 0] },
+            to: async (next, cancel) => {
+                await next({
+                    scale: [1, 1, 1],
+                    config: { duration: 500 }
+                })
+                await next({
+                    position: computePos(meteors[i]),
+                    config: {
+                        duration: meteors[i].fallDuration - 1000,
+                        easing: t => t*t
+                    }
+                })
+                await next({
+                    scale: [0, 0, 0],
+                    config: { duration: 500 }
+                })
             }
         })
     )
@@ -76,11 +87,21 @@ export function Scene3D() {
             setMeteorsAnim(i => {
                 const toPoint = computePos(meteors[i])
                 const fromPoint = (computePos(meteors[i], true) - toPoint) * progression + toPoint
+                const baseScale = progression < 1 ? [1, 1, 1] : [0, 0, 0]
                 return {
-                    from: { position: fromPoint },
-                    to: { position: toPoint },
-                    config: {
-                        duration: meteors[i].fallDuration * progression,
+                    from: { position: fromPoint, scale: baseScale },
+                    to: async (next, cancel) => {
+                        await next({
+                            position: toPoint,
+                            config: {
+                                duration: (meteors[i].fallDuration * progression) - 500,
+                                easing: t => t*t
+                            }
+                        })
+                        await next({
+                            scale: [0, 0, 0],
+                            config: { duration: 500 }
+                        })
                     }
                 }
             })
@@ -90,7 +111,6 @@ export function Scene3D() {
             }))
         }
     }, [ctx.autoNavigationIsPlaying, pathname])
-
 
     const timerRef = useRef(null)
 
@@ -105,7 +125,7 @@ export function Scene3D() {
             }
         }, 1000)
         return () => { clearInterval(interval) }
-      }, [ctx]);
+    }, [ctx])
 
     return (
         <Canvas id="main3DScene" style={{height:'100vh',width:'100vw'}}>
