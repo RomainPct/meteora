@@ -47,9 +47,9 @@ export const YearBarInfo = (props) => {
             <div className="Line"></div>
             <div className="yearBarInfoItems">
                 <div className="yearNameMenu">
-                    <img onClick={_ => navigateInYears(false)} src={backSpace} />
+                    <img onClick={_ => navigateInYears(false)} className="changeYearButton" src={backSpace} />
                     Year {props.year}
-                    <img onClick={_ => navigateInYears(true)} className="reversed" src={backSpace} />
+                    <img onClick={_ => navigateInYears(true)} className="changeYearButton reversed" src={backSpace} />
                 </div>
                 <div className="yearBarMeteors">
                     {props.meteorsCount} meteors detected this year
