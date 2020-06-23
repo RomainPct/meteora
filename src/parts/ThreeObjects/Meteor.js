@@ -19,8 +19,8 @@ function MeteorFallback(props) {
 function MeteorModel(props) {
 
     const mesh = useRef()
-    const texture = useMemo(() => new TextureLoader().load(`/meteor/${props.meteor.texture}/texture.jpg`), [])
-    const normalMap = useMemo(() => new TextureLoader().load(`/meteor/${props.meteor.texture}/normal.png`), [])
+    const texture = useMemo(() => new TextureLoader().load(`/meteor/${props.meteor.texture}/texture.jpg`), [props.meteor.texture])
+    const normalMap = useMemo(() => new TextureLoader().load(`/meteor/${props.meteor.texture}/normal.png`), [props.meteor.texture])
     const { nodes } = useLoader(GLTFLoader, '/3D_objects/meteor.glb');
 
     useFrame(() => {
@@ -54,8 +54,8 @@ export function Meteor(props) {
     })
 
     function capsuleSize() {
-        const size = Math.max(Math.min(props.meteor.mass / 4000, 0.2), 0.01)
-        return [size, 24, 24]
+        const scale = Math.max(...props.meteor.scale) * 1.9
+        return [scale, 24, 24]
     }
     
     return (
@@ -71,8 +71,8 @@ export function Meteor(props) {
             {hovered ?
                 <mesh
                     material={new MeshPhongMaterial({
-                        color: 0xffffff,
-                        opacity: 0.6,
+                        color: 0xA6D9DC,
+                        opacity: 0.4,
                         transparent: true
                     })}
                     >
