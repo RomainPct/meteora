@@ -2,6 +2,7 @@ import '../style/YearBarInfo.css'
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import API from '../managers/API'
+import backSpace from '../assets/images/keyboard_backspace-white-18dp.svg'
 
 export const YearBarInfo = (props) => {
 
@@ -31,7 +32,7 @@ export const YearBarInfo = (props) => {
         <div className="yearBarInfoContainer">
             <div className="Line"></div>
             <div className="yearBarInfoItems">
-                <div className="yearNameMenu">Year {props.year}</div>
+                <div className="yearNameMenu"><a><img src={backSpace}></img></a>Year {props.year}<a><img className="reversed" src={backSpace}></img></a></div>
                 <div className="yearBarMeteors">
                     {props.meteorsCount} meteors detected this year
                     <div className="yearBarMeteorsBackground" style={{transform: `scaleX(${Math.min(props.meteorsCount / 3323, 1)})`}}></div>
