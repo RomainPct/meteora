@@ -4,9 +4,6 @@ import { useFrame, useLoader } from 'react-three-fiber'
 import { TextureLoader, MeshPhongMaterial, Vector2 } from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
-import meteorTexture from '../../assets/meteor/1/texture.jpg'
-import meteorNormalMap from '../../assets/meteor/1/normal.png'
-
 function MeteorFallback(props) {
     return (
         <mesh
@@ -22,8 +19,8 @@ function MeteorFallback(props) {
 function MeteorModel(props) {
 
     const mesh = useRef()
-    const texture = useMemo(() => new TextureLoader().load(meteorTexture), [])
-    const normalMap = useMemo(() => new TextureLoader().load(meteorNormalMap), [])
+    const texture = useMemo(() => new TextureLoader().load(`/meteor/${props.meteor.texture}/texture.jpg`), [])
+    const normalMap = useMemo(() => new TextureLoader().load(`/meteor/${props.meteor.texture}/normal.png`), [])
     const { nodes } = useLoader(GLTFLoader, '/3D_objects/meteor.glb');
 
     useFrame(() => (mesh.current.rotation.z = mesh.current.rotation.z += 0.01))
@@ -60,7 +57,7 @@ export function Meteor(props) {
             onPointerOut={_ => setHover(false)}
             >
             <Suspense fallback={<MeteorFallback size={size()} />}>
-                <MeteorModel />
+                <MeteorModel meteor={props.meteor} />
             </Suspense>
             {hovered ?
                 <mesh
