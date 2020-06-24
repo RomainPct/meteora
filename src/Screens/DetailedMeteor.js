@@ -39,9 +39,9 @@ export const DetailedMeteor = () => {
             <h1>This is DetailedMeteor {detailedMeteor.id}</h1>
             <div className="detailedMeteorContainer">
                 <div className="detailedMeteorText">
+                    <p className="infoDesc">Year {detailedMeteor.year}</p>
                     <h3>{detailedMeteor.name}</h3>
-                    <h3>{detailedMeteor.year}</h3>
-                    <h3>{detailedMeteor.description}</h3>
+                    <p>{detailedMeteor.description}</p>
                 </div>
                     <div className="detailedMeteorUpperInfo">
                         <div className="meteorInfoCard">
