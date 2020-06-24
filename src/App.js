@@ -89,7 +89,6 @@ function App() {
 
     const playAudioFeedback = () => {
         ctx.update(null, currentCtx => {
-            console.log(currentCtx.isAudioEnabled)
             if (currentCtx.isAudioEnabled) {
                 feedbackSound.current.currentTime = 0
                 feedbackSound.current.play()

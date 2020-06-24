@@ -1,5 +1,5 @@
 import '../style/MoreBar.css'
-import React, { useState, useEffect, useRef, useContext } from 'react'
+import React, { useEffect, useRef, useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import {animated, useSpring} from 'react-spring'
 import soundOn from '../assets/images/volumeup.svg'
