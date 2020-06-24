@@ -44,11 +44,10 @@
     padding: 15%;
     transform: translate(-50%, -50%);
     opacity: 0;
+    transition: opacity 0.4s ease-in-out;
 }
-
 .linkProfile:hover{
-    transition: 0.2s;
-    opacity: 0.8;
+    opacity: 0.7;
 }
 
 .containerShare{
@@ -61,11 +60,11 @@
     color: #f3f3f3;
     margin: 60px;
     cursor: pointer;
+    transition: opacity 0.4s ease-in-out;
 }
 
 .shareBar:hover{
-    color: #243859;
-    transition: 0.2s;
+    opacity: 0.7;
 }
 
 .logoShare{
