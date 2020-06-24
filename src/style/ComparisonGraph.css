@@ -40,18 +40,18 @@
     transition: transform .3s;
 }
 .comparisonCircle.circleBig {
-    width: 50vh;
-    height: 50vh;
+    width: 40vh;
+    height: 40vh;
     background-color: #A6D9DC;
 }
 .comparisonCircle.circleMed {
-    width: 30vh;
-    height: 30vh;
+    width: 24vh;
+    height: 24vh;
     background-color: #47799C;
 }
 .comparisonCircle.circleSmall {
-    width: 10vh;
-    height: 10vh;
+    width: 8vh;
+    height: 8vh;
     background-color: #243859;
 }
 
