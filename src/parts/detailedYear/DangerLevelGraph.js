@@ -19,7 +19,7 @@ export const DangerLevelGraph = (props) => {
                 <div className="dangerThisYear">
                     <h3 className="dangerTextBiggest">Most massive <br></br> meteor this year :</h3>
                     <div className="dangerContainer">
-                        <div className="circleDanger" style={{transform: `translate(-50%, -50%) scale(${biggestMeteor.mass/500000})`}}>
+                        <div className="circleDanger" style={{transform: `translate(-50%, -50%) scale(${biggestMeteor.mass/5000000})`}}>
                         </div>
                         <div className="circleText">
                             {biggestMeteor.mass}g
@@ -27,7 +27,7 @@ export const DangerLevelGraph = (props) => {
                     </div>
                 </div>
                 <div className="chicxculub">
-                    <h3 className="dangerText">Chicxculub <br></br>(dinausaurs’killer):</h3>
+                    <h3 className="dangerText">Chicxculub <br></br>(dinausaurs’killer)</h3>
                     <p className="massDino">4,6 × 10¹⁷ kg</p>
                     <div className="circleDino">
                     </div>
