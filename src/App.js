@@ -69,7 +69,8 @@ function App() {
             return {
                 currentYearIndex: yearIndex,
                 currentMonth: nextMonth,
-                currentYear: currentCtx.availableYears[yearIndex]
+                currentYear: currentCtx.availableYears[yearIndex],
+                autoNavigationIsPlaying: true
             }
         })
     }

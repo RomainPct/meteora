@@ -47,7 +47,8 @@ export const YearBarInfo = (props) => {
                 return {
                     currentYearIndex: yearIndex,
                     currentMonth: month,
-                    currentYear: currentCtx.availableYears[yearIndex]
+                    currentYear: currentCtx.availableYears[yearIndex],
+                    autoNavigationIsPlaying: true
                 }
             }
         )
