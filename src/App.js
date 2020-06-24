@@ -6,7 +6,7 @@ import {
   } from 'react-router-dom'
 import API from './managers/API'
 import { AppContent } from './parts/AppContent'
-import feedbackSoundUrl from './assets/audio_feedback.ogg'
+import feedbackSoundUrl from './assets/audio_feedback.mp3'
 
 function App() {
 
