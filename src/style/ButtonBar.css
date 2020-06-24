@@ -18,9 +18,15 @@
     text-align: center;
     white-space: nowrap;
     cursor: pointer;
+    transition: opacity 0.4s ease-in-out;
 }
+
+.button:hover{
+    opacity: 0.7;
+}
+
 .button.selected {
     background: #243859;
     font-weight: 600;
-    transition: background 0.3s;
+    transition: opacity 0.4s ease-in-out;
 }
