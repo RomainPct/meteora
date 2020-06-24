@@ -33,7 +33,7 @@
 
 .circleText{
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -46,12 +46,12 @@
 }
 
 .circleDino{
-    height: 1500px;
-    width: 1000px;
+    height: 6000px;
+    width: 6000px;
     background: #243859;
     border-radius: 50%;
     position: absolute;
-    top: -700%;
+    top: -2200%;
     z-index: -1000;
 }
 

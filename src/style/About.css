@@ -8,6 +8,9 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.titleAbout{
     margin-top: 30px;
 }
 
@@ -21,12 +24,22 @@
 .pictureLine{
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 60px;
+    margin-top: 60px
 }
 
 .teamPic{
     text-align: center;
     width: 50%;
+}
+
+.profilePic{
+    position: relative;
+}
+
+.linkProfile{
+    position: absolute;
+    opacity: 0;
 }
 
 .containerShare{
@@ -37,8 +50,13 @@
     display: flex;
     text-decoration: none;
     color: #f3f3f3;
-    margin: 15px;
+    margin: 60px;
     cursor: pointer;
+}
+
+.shareBar:hover{
+    color: #243859;
+    transition: 0.2s;
 }
 
 .logoShare{
