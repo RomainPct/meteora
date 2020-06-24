@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom'
 import {animated, useSpring} from 'react-spring'
 import soundOn from '../assets/images/volumeup.svg'
 import soundOff from '../assets/images/volumeoff.svg'
-import backgroundSound from '../assets/meteora_audio.mp3'
+import backgroundSound from '../assets/meteora_audio.ogg'
 
 export const MoreBar = () => {
 
