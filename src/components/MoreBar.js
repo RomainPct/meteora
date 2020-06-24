@@ -22,6 +22,8 @@ export const MoreBar = () => {
     }
 
     useEffect(() => {
+        sound.current.loop = true
+        sound.current.volume = 0.8
         isPlaying ? sound.current.play() : sound.current.pause()
     }, [isPlaying])
 
