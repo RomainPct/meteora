@@ -141,7 +141,7 @@ export function Scene3D() {
                 <Space />
                 <Earth isRotating={pathname === '/' && ctx.autoNavigationIsPlaying} />
                 <EarthAtmosphere isRotating={pathname === '/' && ctx.autoNavigationIsPlaying} />
-                {meteorsAnim.map( (props, i) => (
+                {(meteorsAnim ?? [] ).map( (props, i) => (
                     <Meteor
                         {...props}
                         onClick={_ => handleClick(meteors[i].id, i)}
