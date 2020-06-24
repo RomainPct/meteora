@@ -15,30 +15,30 @@ export const AboutUs = () => {
     return (
         <main className="aboutPage">
             <div className="containerAbout">
-                <h2>AboutUs</h2>
+                <h2 className="titleAbout">AboutUs</h2>
                 <div className="containerPicture">
                     <div className="pictureLine">
                         <div className="teamPic">
-                            <img src={romain} alt="team picture romain"/>
+                            <img src={romain} className="profilePic" alt="team picture romain"/>
                             <p>Romain Penchenat</p>
                             <p>Project leader & front-end developper</p>
                         </div>
                         <div className="teamPic">
-                            <img src={hugo} alt="team picture hugo"/>
+                            <img src={hugo} className="profilePic" alt="team picture hugo"/>
                             <div className="teamText">
                                 <p>Hugo Leroy</p>
                                 <p>Front-end developper & UI Designer</p>
                             </div>
                         </div>
                         <div className="teamPic">
-                            <img src={loup} alt="team picture loup"/>
+                            <img src={loup} className="profilePic" alt="team picture loup"/>
                             <div className="teamText">
                                 <p>Loup Lemaire</p>
                                 <p>Back-end developper</p>
                             </div>
                         </div>
                         <div className="teamPic">
-                            <img src={nicolas} alt="team picture nicolas"/>
+                            <img src={nicolas} className="profilePic" alt="team picture nicolas"/>
                             <div className="teamText">
                                 <p>Nicolas Decreton</p>
                                 <p>Front-end developper & UI Designer</p>
@@ -47,17 +47,17 @@ export const AboutUs = () => {
                     </div>
                     <div className="pictureLine">
                         <div className="teamPic">
-                            <img src={oscar} alt="team picture oscar"/>
+                            <img src={oscar} className="profilePic" alt="team picture oscar"/>
                             <p>Oscar Thiriet</p>
                             <p>Graphic Designer</p>
                         </div>
                         <div className="teamPic">
-                            <img src={victor} alt="team picture victor"/>
+                            <img src={victor} className="profilePic" alt="team picture victor"/>
                             <p>Victor Buczkowski</p>
                             <p>Graphic Designer</p>
                         </div>
                         <div className="teamPic">
-                            <img src={arnaud} alt="team picture arnaud"/>
+                            <img src={arnaud} className="profilePic" alt="team picture arnaud"/>
                             <p>Arnaud Soyer</p>
                             <p>Marketer</p>
                         </div>
