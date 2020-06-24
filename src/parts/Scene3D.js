@@ -1,6 +1,7 @@
 import '../style/Scene3D.css'
 import React, { useContext, useEffect, useRef } from 'react'
 import { Canvas } from 'react-three-fiber'
+import { Space } from './ThreeObjects/Space'
 import { Earth } from './ThreeObjects/Earth'
 import { EarthAtmosphere } from './ThreeObjects/EarthAtmosphere'
 import { Meteor } from './ThreeObjects/Meteor'
@@ -134,6 +135,7 @@ export function Scene3D() {
                 <ambientLight args={[0x404040, 0.6]}/>
                 <hemisphereLight args={[0x404040, 0x000000, 0.7]} />
                 <FixedLight />
+                <Space />
                 <Earth isRotating={pathname === '/' && ctx.autoNavigationIsPlaying} />
                 <EarthAtmosphere isRotating={pathname === '/' && ctx.autoNavigationIsPlaying} />
                 {meteorsAnim.map( (props, i) => (

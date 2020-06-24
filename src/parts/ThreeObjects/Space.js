@@ -1,23 +1,25 @@
-import React, { useState, useRef, useMemo, useContext } from 'react'
-import earthTexture from '../../assets/textures/2k_earth_daymap.jpg'
-import earthNormalMap from '../../assets/textures/2k_earth_normal_map.jpg'
-import earthSpecularMap from '../../assets/textures/2k_earth_specular_map.jpg'
-import { useFrame } from 'react-three-fiber'
-import { TextureLoader, MeshPhongMaterial, Vector2, MeshBasicMaterial } from 'three'
-import { useSpring, animated } from 'react-spring/three'
-import { GlobalContext } from '../../contexts/GlobalContext'
+import React, { useMemo } from 'react'
+import spaceTexture from '../../assets/textures/space.jpg'
+import { TextureLoader, MeshBasicMaterial, BackSide, RepeatWrapping } from 'three'
 
-export function Earth(props) {
+export function Space() {
 
-    const texture = useMemo(() => new TextureLoader().load(earthTexture), [])
+    const texture = useMemo(() => {
+        const texture = new TextureLoader().load(spaceTexture)
+        texture.wrapT = RepeatWrapping
+        texture.wrapS = RepeatWrapping
+        texture.repeat.set( 8, 4)
+        return texture
+    }, [])
 
     return (
-        <animated.mesh
+        <mesh
             material={new MeshBasicMaterial({
-                map: texture
+                map: texture,
+                side: BackSide
             })}
             >
-            <sphereBufferGeometry attach="geometry" args={[20, 50, 50]} />
-        </animated.mesh>
+            <sphereBufferGeometry attach="geometry" args={[20, 12, 12]} />
+        </mesh>
         )
 }
