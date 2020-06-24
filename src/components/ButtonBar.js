@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import '../style/ButtonBar.css'
+import { GlobalContext } from '../contexts/GlobalContext'
 function Buttontype(props) {
 
     return <div onClick={props.action} className={props.isSelected ? "button selected" : "button"} >{props.name}</div>;
@@ -7,11 +8,14 @@ function Buttontype(props) {
 
 export const ButtonBar = (props) => {
 
+    const ctx = useContext(GlobalContext)
+
     const [selectedButton, setSelectedButton] = useState(props.defaultId ?? 1)
 
     const select = (id) => {
         setSelectedButton(id)
         props.onSelect(id)
+        ctx.playAudioFeedback()
     }
 
     return (
