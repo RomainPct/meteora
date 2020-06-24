@@ -15,7 +15,7 @@ export const AboutUs = () => {
     return (
         <main className="aboutPage">
             <div className="containerAbout">
-                <h2 className="titleAbout">AboutUs</h2>
+                <h2 className="titleAbout">About us</h2>
                 <div className="containerPicture">
                     <div className="pictureLine">
                         <div className="teamPic">
