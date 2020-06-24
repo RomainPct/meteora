@@ -19,7 +19,10 @@ export const Header = () => {
                 ? 'translateX(0vw) translateX(0px) translateX(0%) translateY(0%) scale(1)'
                 : 'translateX(0vw) translateX(80px) translateX(0%) translateY(0%) scale(1)'
             )
-            : 'translateX(50vw) translateX(0px) translateX(-50%) translateY(100%) scale(2)'
+            : ( pathname === '/'
+                ? 'translateX(50vw) translateX(0px) translateX(-50%) translateY(100%) scale(2)'
+                : 'translateX(0vw) translateX(80px) translateX(0%) translateY(0%) scale(1)'
+            )
     })
 
     const backButtonSpring = useSpring({
