@@ -88,8 +88,9 @@ export function Scene3D() {
         if (ctx.autoNavigationIsPlaying && pathname === '/') {
             const progression = 1 - (timerRef.current /20)
             setMeteorsAnim(i => {
-                const toPoint = computePos(meteors[i], false, 0.2)
-                const fromPoint = (computePos(meteors[i], true) - toPoint) * progression + toPoint
+                const meteor = meteors[i] ?? {}
+                const toPoint = computePos(meteor, false, 0.2)
+                const fromPoint = (computePos(meteor, true) - toPoint) * progression + toPoint
                 const baseScale = progression < 1 ? [1, 1, 1] : [0, 0, 0]
                 return {
                     from: { position: fromPoint, scale: baseScale },
@@ -97,13 +98,13 @@ export function Scene3D() {
                         await next({
                             position: toPoint,
                             config: {
-                                duration: (meteors[i].fallDuration * progression) - 500,
+                                duration: (meteor.fallDuration * progression) - 500,
                                 easing: t => t*t
                             }
                         })
                         await next({
                             scale: [0, 0, 0],
-                            position: computePos(meteors[i]),
+                            position: computePos(meteor),
                             config: { duration: 500 }
                         })
                     }

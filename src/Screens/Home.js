@@ -27,32 +27,40 @@ export const Home = () => {
         }
         return fact.current
     }
-    const { events } = useScrollOnDrag(timelineRef, {
-        onDragStart: () => {
-            timelineBarWidth = timelineBarRef.current.offsetWidth
-            offset = timelineBarRef.current.offsetWidth / -2
-            timelineBarRef.current.style.cursor = 'grabbing'
+
+    const timelineMovementStart = () => {
+        timelineBarWidth = timelineBarRef.current.offsetWidth
+        offset = timelineBarRef.current.offsetWidth / -2
+        timelineBarRef.current.style.cursor = 'grabbing'
+        relativeOffset = 0
+    }
+
+    const timelineIsMoving = (dx) => {
+        relativeOffset -= dx
+        if (Math.abs(relativeOffset) > 40) {
+            ctx.moveInTimeline(relativeOffset < 0)
             relativeOffset = 0
-        },
-        runScroll: ({dx}) => {
-            relativeOffset -= dx
-            if (Math.abs(relativeOffset) > 40) {
-                ctx.moveInTimeline(relativeOffset < 0)
-                relativeOffset = 0
-            }
-            offset -= dx
-            const absOffset = Math.abs(offset)
-            if (absOffset < timelineBarWidth * 1/3 ) {
-                offset -= timelineBarWidth / 3
-            } else if (absOffset > timelineBarWidth * 2/3 ) {
-                offset += timelineBarWidth / 3
-            }
-            timelineBarRef.current.style.transform = `translateX(${offset}px)`
-        },
-        onDragEnd: () => {
-            timelineBarWidth = null
-            timelineBarRef.current.style.cursor = 'grab'
         }
+        offset -= dx
+        const absOffset = Math.abs(offset)
+        if (absOffset < timelineBarWidth * 1/3 ) {
+            offset -= timelineBarWidth / 3
+        } else if (absOffset > timelineBarWidth * 2/3 ) {
+            offset += timelineBarWidth / 3
+        }
+        timelineBarRef.current.style.transform = `translateX(${offset}px)`
+    }
+
+    const timelineMovementEnd = () => {
+        offset = null
+        timelineBarWidth = null
+        timelineBarRef.current.style.cursor = 'grab'
+    }
+
+    const { events } = useScrollOnDrag(timelineRef, {
+        onDragStart: timelineMovementStart,
+        runScroll: ({dx}) => timelineIsMoving(dx),
+        onDragEnd: timelineMovementEnd
     })
 
     const descriptionTransition = useTransition(
@@ -93,7 +101,14 @@ export const Home = () => {
             {ctx.introductionIsDone === true ?
                 <div className="homeMainNavigation">
                     <h3>{getMonthName(ctx.currentMonth)} - {ctx.currentYear.year}</h3>
-                    <div {...events} className="timeline" ref={timelineRef} >
+                    <div
+                        {...events}
+                        className="timeline"
+                        ref={timelineRef}
+                        onWheel={e => timelineIsMoving(e.deltaX / 2)}
+                        onMouseEnter={timelineMovementStart}
+                        onMouseLeave={timelineMovementEnd}
+                        >
                         <div ref={timelineBarRef} className="bar"></div>
                     </div>
                     <div
