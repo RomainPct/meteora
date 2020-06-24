@@ -6,6 +6,10 @@
 img{
     width: 200px;
 }
+h2{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 @media screen and (max-width: 800px) {
     .mobileDisclaimerContainer{
         top: 0;

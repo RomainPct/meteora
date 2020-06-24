@@ -6,8 +6,8 @@ export const MobileDisclaimer = () => {
         <div className="mobileDisclaimerContainer">
             <img src="./computer.svg"/>
             <h2>This experience is not available for mobile devices
-                <br/>Please access the website from a computer 
             </h2>
+            <p>Please access the website from a computer </p>
         </div>
     )
 }
