@@ -131,10 +131,11 @@ export function Scene3D() {
         <Canvas id="main3DScene" style={{height:'100vh',width:'100vw'}}>
             <GlobalContext.Provider value={ctx}>
                 <CameraControls />
-                <ambientLight args={[0x404040]}/>
+                <ambientLight args={[0x404040, 0.6]}/>
+                <hemisphereLight args={[0x404040, 0x000000, 0.7]} />
                 <FixedLight />
-                <Earth isRotating={pathname === '/'} />
-                <EarthAtmosphere isRotating={pathname === '/'} />
+                <Earth isRotating={pathname === '/' && ctx.autoNavigationIsPlaying} />
+                <EarthAtmosphere isRotating={pathname === '/' && ctx.autoNavigationIsPlaying} />
                 {meteorsAnim.map( (props, i) => (
                     <Meteor
                         {...props}

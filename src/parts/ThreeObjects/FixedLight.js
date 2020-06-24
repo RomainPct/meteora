@@ -8,7 +8,7 @@ export const FixedLight = () => {
     useEffect(() => {
         const light = new DirectionalLight(0xffffff, 1)
         light.position.x = 5
-        light.position.z = -3
+        light.position.z = -1
         camera.add(light)
         scene.add(camera)
     }, [camera, scene] )
