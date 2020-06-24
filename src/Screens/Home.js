@@ -82,6 +82,11 @@ export const Home = () => {
         return i === 0 ? 'Past is mysterious...' : months[i-1]
     }
 
+    const autoNavigation = () => {
+        ctx.playAudioFeedback()
+        ctx.update({ autoNavigationIsPlaying: !ctx.autoNavigationIsPlaying })
+    }
+
     return (
         <main className="noSelect">
             <h1>This is home</h1>
@@ -112,7 +117,7 @@ export const Home = () => {
                         <div ref={timelineBarRef} className="bar"></div>
                     </div>
                     <div
-                        onClick={_ => ctx.update({ autoNavigationIsPlaying: !ctx.autoNavigationIsPlaying }) }
+                        onClick={autoNavigation}
                         className={ctx.autoNavigationIsPlaying ? "playPauseButton" : "playPauseButton paused"}
                         />
                 </div>
