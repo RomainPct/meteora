@@ -1,7 +1,7 @@
 # ☄️ <a href="https://meteora.netlify.app" alt="METEORA">METEORA</a>
 
 > ☄️ <a href="https://meteora.netlify.app" alt="METEORA">METEORA</a> project was done for educational purposes at Hetic - Team 2 H2 P2023
-
+>
 > 🔭 This project uses its own <a href="https://github.com/louplemaire/meteora-api" alt="METEORA API">METEORA API</a>
 
 ## 💻 Stack
