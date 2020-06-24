@@ -1,9 +1,4 @@
 .aboutUsButton {
-    position: fixed;
-    top: 24px;
-    right: 40px;
-    padding: 16px;
-    z-index: 200;
     transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
 .aboutUsButton a {
@@ -14,4 +9,17 @@
 .aboutUsButton:hover{
     opacity: 0.7;
     transform: scale(1.1);
+}
+.moreBarContainer{
+    position: fixed;
+    top: 24px;
+    right: 40px;
+    padding: 16px;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+
+}
+.soundButton{
+    width: 40px;
 }
