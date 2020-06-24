@@ -8,7 +8,7 @@ export function Space() {
         const texture = new TextureLoader().load(spaceTexture)
         texture.wrapT = RepeatWrapping
         texture.wrapS = RepeatWrapping
-        texture.repeat.set( 8, 4)
+        texture.repeat.set(8, 4)
         return texture
     }, [])
 

@@ -30,10 +30,10 @@ export function Scene3D() {
         return currentMeteors
     }
 
-    function computePos(meteor, startPoint = false) {
+    function computePos(meteor, startPoint = false, radiusOffset = 0) {
         let long = startPoint ? meteor.startLong : meteor.long
         let lat = startPoint ? meteor.startLat : meteor.lat
-        const radius = startPoint ? 4 + meteor.startDistance : 1.6
+        const radius = (startPoint ? 4 + meteor.startDistance : 1.6) + radiusOffset
         const spherical = new Spherical(
           radius,
           ThreeMath.degToRad(long),
@@ -48,14 +48,15 @@ export function Scene3D() {
     const [ meteorsAnim, setMeteorsAnim ] = useSprings(
         meteors.length,
         i => ({
-            from: { position: computePos(meteors[i], true), scale: [0, 0, 0] },
+            from: { position: computePos(meteors[i], true, 0.15), scale: [0, 0, 0] },
             to: async (next, cancel) => {
                 await next({
                     scale: [1, 1, 1],
+                    position: computePos(meteors[i], true),
                     config: { duration: 500 }
                 })
                 await next({
-                    position: computePos(meteors[i]),
+                    position: computePos(meteors[i], false, 0.2),
                     config: {
                         duration: meteors[i].fallDuration - 1000,
                         easing: t => t*t
@@ -63,6 +64,7 @@ export function Scene3D() {
                 })
                 await next({
                     scale: [0, 0, 0],
+                    position: computePos(meteors[i]),
                     config: { duration: 500 }
                 })
             }
@@ -86,7 +88,7 @@ export function Scene3D() {
         if (ctx.autoNavigationIsPlaying && pathname === '/') {
             const progression = 1 - (timerRef.current /20)
             setMeteorsAnim(i => {
-                const toPoint = computePos(meteors[i])
+                const toPoint = computePos(meteors[i], false, 0.2)
                 const fromPoint = (computePos(meteors[i], true) - toPoint) * progression + toPoint
                 const baseScale = progression < 1 ? [1, 1, 1] : [0, 0, 0]
                 return {
@@ -101,6 +103,7 @@ export function Scene3D() {
                         })
                         await next({
                             scale: [0, 0, 0],
+                            position: computePos(meteors[i]),
                             config: { duration: 500 }
                         })
                     }
