@@ -5,10 +5,10 @@
     padding: 16px;
     color: #f3f3f3;
     text-decoration: none;
+    transition: opacity 0.4s ease-in-out;
 }
-.aboutUsButton:hover{
+.aboutUsButton a:hover{
     opacity: 0.7;
-    transform: scale(1.1);
 }
 .moreBarContainer{
     position: fixed;
@@ -23,4 +23,8 @@
 .soundButton{
     width: 40px;
     cursor: pointer;
+    transition: opacity 0.4s ease-in-out;
+}
+.soundButton:hover{
+    opacity: 0.7;
 }
