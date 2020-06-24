@@ -6,6 +6,9 @@ class API {
         fetch(`${API.HOST}/${endpoint}`)
             .then(response => response.json())
             .then(json => handler(json))
+            .catch(function() {
+                console.log('fetch error')
+            })
     }
 
     /**

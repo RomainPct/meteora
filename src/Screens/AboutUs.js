@@ -20,8 +20,8 @@ export const AboutUs = () => {
                     <div className="pictureLine">
                         <div className="teamPic">
                             <div className="containerPP">
-                                <img src={romain} alt="team picture romain"/>
-                                <a className="linkProfile" target="_blank" rel="noopener" href="https://www.linkedin.com/in/romain-penchenat/">
+                                <img src={romain} alt="team romain"/>
+                                <a className="linkProfile" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/romain-penchenat/">
                                     <img src={linkedin} alt="linkedin logo"/>
                                 </a>
                             </div>
@@ -30,8 +30,8 @@ export const AboutUs = () => {
                         </div>
                         <div className="teamPic">
                             <div className="containerPP">
-                                <img src={hugo} className="profilePic" alt="team picture hugo"/>
-                                <a className="linkProfile" target="_blank" rel="noopener" href="https://www.linkedin.com/in/hugoleroyhl/">
+                                <img src={hugo} className="profilePic" alt="team hugo"/>
+                                <a className="linkProfile" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/hugoleroyhl/">
                                     <img src={linkedin} alt="linkedin logo"/>
                                 </a>
                             </div>
@@ -40,8 +40,8 @@ export const AboutUs = () => {
                         </div>
                         <div className="teamPic">
                             <div className="containerPP">
-                                <img src={loup} className="profilePic" alt="team picture loup"/>
-                                <a className="linkProfile" target="_blank" rel="noopener" href="https://www.linkedin.com/in/louplemaire/">
+                                <img src={loup} className="profilePic" alt="team loup"/>
+                                <a className="linkProfile" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/louplemaire/">
                                     <img src={linkedin} alt="linkedin logo"/>
                                 </a>
                             </div>
@@ -50,8 +50,8 @@ export const AboutUs = () => {
                         </div>
                         <div className="teamPic">
                             <div className="containerPP">
-                                <img src={nicolas} className="profilePic" alt="team picture nicolas"/>
-                                <a className="linkProfile" target="_blank" rel="noopener" href="https://www.linkedin.com/in/nicolas-decreton-3844921a1">
+                                <img src={nicolas} className="profilePic" alt="team nicolas"/>
+                                <a className="linkProfile" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/nicolas-decreton-3844921a1">
                                     <img src={linkedin} alt="linkedin logo"/>
                                 </a>
                             </div>
@@ -62,8 +62,8 @@ export const AboutUs = () => {
                     <div className="pictureLine">
                         <div className="teamPic">
                             <div className="containerPP">
-                                <img src={oscar} className="profilePic" alt="team picture oscar"/>
-                                <a className="linkProfile" target="_blank" rel="noopener" href="https://www.linkedin.com/in/oscarthiriet/">
+                                <img src={oscar} className="profilePic" alt="team oscar"/>
+                                <a className="linkProfile" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/oscarthiriet/">
                                     <img src={linkedin} alt="linkedin logo"/>
                                 </a>
                             </div>
@@ -72,8 +72,8 @@ export const AboutUs = () => {
                         </div>
                         <div className="teamPic">
                             <div className="containerPP">
-                                <img src={victor} className="profilePic" alt="team picture victor"/>
-                                <a className="linkProfile" target="_blank" rel="noopener" href="https://www.linkedin.com/in/victor-buczkowski-572251199/">
+                                <img src={victor} className="profilePic" alt="team victor"/>
+                                <a className="linkProfile" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/victor-buczkowski-572251199/">
                                     <img src={linkedin} alt="linkedin logo"/>
                                 </a>
                             </div>
@@ -82,8 +82,8 @@ export const AboutUs = () => {
                         </div>
                         <div className="teamPic">
                             <div className="containerPP">
-                                <img src={arnaud} className="profilePic" alt="team picture arnaud"/>
-                                <a className="linkProfile" target="_blank" rel="noopener" href="https://www.linkedin.com/in/arnaud-soyer/">
+                                <img src={arnaud} className="profilePic" alt="team arnaud"/>
+                                <a className="linkProfile" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/arnaud-soyer/">
                                     <img src={linkedin} alt="linkedin logo"/>
                                 </a>
                             </div>
@@ -93,11 +93,11 @@ export const AboutUs = () => {
                     </div>
                 </div>
                 <div className="containerShare">
-                    <a className="shareBar" target="_blank" rel="noopener"  href="https://twitter.com/intent/tweet?text=%F0%9F%8C%9F%20I%20recommend%20this%20experience%20from%20outer%20space%20!%20%23meteora%20by%20%40romainp_design%20%40Hugo_LeroyHL%20%40LoupLemaire%20%40knownasneelo%20https://meteora.netlify.app">
+                    <a className="shareBar" target="_blank" rel="noopener noreferrer"  href="https://twitter.com/intent/tweet?text=%F0%9F%8C%9F%20I%20recommend%20this%20experience%20from%20outer%20space%20!%20%23meteora%20by%20%40romainp_design%20%40Hugo_LeroyHL%20%40LoupLemaire%20%40knownasneelo%20https://meteora.netlify.app">
                         <img src={twitter} className="logoShare" alt="Twitter Logo"/>
                         <h3>Tweet about it !</h3>
                     </a>
-                    <a className="shareBar" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmeteora.netlify.app&title=%F0%9F%8C%9F%20I%20recommend%20this%20experience%20from%20outer%20space%20!%20%23meteora">
+                    <a className="shareBar" target="_blank" rel="noopener noreferrer" href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmeteora.netlify.app&title=%F0%9F%8C%9F%20I%20recommend%20this%20experience%20from%20outer%20space%20!%20%23meteora">
                         <img src={linkedin} className="logoShare" alt="Linkedin Logo"/>
                         <h3>Share it on LinkedIn !</h3>
                     </a>

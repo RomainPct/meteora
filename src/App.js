@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './style/App.css'
 import { GlobalContext, defaultGlobalContext } from './contexts/GlobalContext'
 import {
     BrowserRouter as Router,
   } from 'react-router-dom'
 import API from './managers/API'
-
 import { AppContent } from './parts/AppContent'
+import feedbackSoundUrl from './assets/audio_feedback.mp3'
 
 function App() {
+
+    const feedbackSound = useRef(new Audio(feedbackSoundUrl))
 
     const loadYear = (_year) => {
         ctx.update(null, currentCtx => {
@@ -85,11 +87,22 @@ function App() {
         })
     }
 
+    const playAudioFeedback = () => {
+        ctx.update(null, currentCtx => {
+            if (currentCtx.isAudioEnabled) {
+                feedbackSound.current.currentTime = 0
+                feedbackSound.current.play()
+            }
+            return null
+        })
+    }
+
     const [ctx, setCtx] = useState({
         ...defaultGlobalContext,
         update: updateContext,
         loadYear: loadYear,
-        moveInTimeline: moveInTimeline
+        moveInTimeline: moveInTimeline,
+        playAudioFeedback: playAudioFeedback
     })
 
     useEffect(() => {

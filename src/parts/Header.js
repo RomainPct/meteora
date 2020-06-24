@@ -28,6 +28,7 @@ export const Header = () => {
     })
 
     const goBackHome = () => {
+        ctx.playAudioFeedback()
         ctx.update(null, (currentCtx) => ({
             ...currentCtx,
             autoNavigationIsPlaying: true,
