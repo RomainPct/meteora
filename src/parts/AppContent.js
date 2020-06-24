@@ -8,6 +8,7 @@ import { DetailedYear } from '../Screens/DetailedYear'
 import { AboutUs } from '../Screens/AboutUs'
 import { Switch, Route, useLocation } from 'react-router-dom'
 import {useTransition, animated} from 'react-spring'
+import { MobileDisclaimer } from '../parts/MobileDisclaimer'
 
 export const AppContent = () => {
 
@@ -47,6 +48,7 @@ export const AppContent = () => {
                     </Switch>
                 </animated.div>
             ))}
+            <MobileDisclaimer/>
         </div>
     )
 }

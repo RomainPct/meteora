@@ -1,0 +1,25 @@
+
+.mobileDisclaimerContainer{
+    display: none;
+    padding: 20px;
+}
+img{
+    width: 200px;
+}
+@media screen and (max-width: 800px) {
+    .mobileDisclaimerContainer{
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 999999999999999;
+        position: absolute;
+        font-weight: 300;
+        text-align: center;
+    }
+  }
