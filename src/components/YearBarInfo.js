@@ -28,10 +28,12 @@ export const YearBarInfo = (props) => {
     }, [props.year])
 
     const openDetailedYear = () => {
+        ctx.playAudioFeedback()
         history.push(`/detailedYear/${props.withLinkTo}`)
     }
 
     const navigateInYears = (inTheFutur) => {
+        ctx.playAudioFeedback()
         ctx.update(
             null,
             (currentCtx) => {
