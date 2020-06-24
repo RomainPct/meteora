@@ -5,6 +5,7 @@ header {
     display: flex;
     align-items: center;
     cursor: pointer;
+    transition: opacity 0.4s ease-in-out;
 }
 
 header .meteora-logo {
@@ -18,4 +19,8 @@ header .backButton {
     width: 44px;
     left: 40px;
     margin-right: 16px;
+}
+
+header:hover{
+    opacity: 0.7;
 }
