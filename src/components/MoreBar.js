@@ -11,7 +11,6 @@ export const MoreBar = () => {
 
     const ctx = useContext(GlobalContext)
     const location = useLocation()
-    const [isPlaying, setIsPlaying] = useState(false)
     const sound = useRef(new Audio(backgroundSound))
 
     const aboutUsSpring = useSpring({
