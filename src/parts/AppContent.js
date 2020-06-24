@@ -1,13 +1,13 @@
 import React from 'react'
 import { Header } from './Header'
+import { MoreBar } from '../components/MoreBar'
 import { Scene3D } from './Scene3D'
 import { Home } from '../Screens/Home'
 import { DetailedMeteor } from '../Screens/DetailedMeteor'
 import { DetailedYear } from '../Screens/DetailedYear'
 import { AboutUs } from '../Screens/AboutUs'
-import { Switch, Route, useLocation, Link } from 'react-router-dom'
-
-import {useTransition, animated, useSpring} from 'react-spring'
+import { Switch, Route, useLocation } from 'react-router-dom'
+import {useTransition, animated} from 'react-spring'
 
 export const AppContent = () => {
 
@@ -24,18 +24,10 @@ export const AppContent = () => {
         }
     )
 
-    const aboutUsSpring = useSpring({
-        opacity: location.pathname !== '/aboutUs' ? 1 : 0,
-        transform: location.pathname !== '/aboutUs' ? 'translateY(0%)' : 'translateY(-50%)',
-        config: { duration: 400 }
-    })
-
     return (
         <div>
             <Header/>
-            <animated.div className="aboutUsButton" style={aboutUsSpring}>
-                <Link to="/aboutUs">About Us</Link>
-            </animated.div>
+            <MoreBar/>
             <Scene3D/>
             {pageTransition.map(({item, key, props}) => (
                 <animated.div key={key} style={props} className='mainContainer' >

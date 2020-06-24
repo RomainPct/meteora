@@ -8,9 +8,9 @@ extend({ OrbitControls });
 export const CameraControls = () => {
 
     const ctx = useContext(GlobalContext)
-
     const { camera, gl: { domElement } } = useThree()
     const controls = useRef()
+
     useEffect(() => {
         const steps = {
             x: (ctx.cameraPosition.x - camera.position.x) / 45,
@@ -28,7 +28,9 @@ export const CameraControls = () => {
             }, 1000/60 * i);
         }
     }, [ctx.cameraPosition])
+
     useFrame(() => controls.current.update())
+
     return <orbitControls
                 ref={controls}
                 args={[camera, domElement]}
