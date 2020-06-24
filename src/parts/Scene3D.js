@@ -72,6 +72,7 @@ export function Scene3D() {
     )
 
     const handleClick = (id, index) => {
+        ctx.playAudioFeedback()
         const pos = meteorsAnim[index].position.payload
         ctx.update({
             autoNavigationIsPlaying: false,
